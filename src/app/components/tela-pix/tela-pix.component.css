@@ -1,0 +1,57 @@
+.bg-icone{
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: 30px;
+}
+.bg-icone-email{
+    background-image: url("../../../assets/img/tela-pix/icone_email.png");
+}
+
+.bg-icone-celular{
+    background-image: url("../../../assets/img/tela-pix/icone_telefone.png");
+}
+
+.bg-icone-cpf{
+    background-image: url("../../../assets/img/tela-pix/icone_cpf.png");
+}
+
+.bg-icone-aleatorio{
+    background-image: url("../../../assets/img/tela-pix/icone_aleatorio.png");
+}
+
+.icons{
+    white-space: nowrap;
+}
+
+.container {
+    display: flex;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Adiciona espaço entre os ícones e rótulos */
+}
+
+.item:last-child {
+    margin-right: 0; /* Remove a margem direita do último item */
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    margin-left: 28%;
+}
+
+.div-mae > h2,
+.div-mae > .div-center,
+.div-mae > .btn,
+.div-mae > .table {
+    margin-bottom: 20px; /* Adiciona espaçamento vertical entre os elementos */
+}
+
+.item button {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}

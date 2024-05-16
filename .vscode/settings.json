@@ -6,6 +6,13 @@
             "port": 37271,
             "driver": "PostgreSQL",
             "name": "AppBank",
+            "name": "Four-Banck",
+            "database": "railway",
+            "username": "postgres"
+            "name": "BancoDigital",
+            "database": "railway",
+            "username": "postgres"
+            "name": "FourBank",
             "username": "postgres",
             "database": "railway"
         }
