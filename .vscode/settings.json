@@ -5,6 +5,7 @@
             "server": "monorail.proxy.rlwy.net",
             "port": 37271,
             "driver": "PostgreSQL",
+            "name": "AppBank",
             "name": "Four-Banck",
             "database": "railway",
             "username": "postgres"
