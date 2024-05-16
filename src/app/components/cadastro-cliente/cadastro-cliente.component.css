@@ -1,0 +1,12 @@
+.form-group{
+  margin-bottom: 20px;
+}
+
+.login-container{
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid  #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #fcfbfb;
+}
