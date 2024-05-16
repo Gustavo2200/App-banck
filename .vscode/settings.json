@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "monorail.proxy.rlwy.net",
+            "port": 37271,
+            "driver": "PostgreSQL",
+            "username": "postgres",
+            "name": "bancoDigital",
+            "database": "railway"
+        }
+    ]
+}

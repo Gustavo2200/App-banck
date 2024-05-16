@@ -1,13 +1,34 @@
-<table class="table table-striped" *ngIf="1==1, else listaExtratoVazia">
+<table class="table table-striped" *ngIf="2==2, else listaExtratoVazia">
     <thead>
         <tr>
             <th>id</th>
             <th>Pagador</th>
             <th>Recebedor</th>
-            <th>Valor</th>
+            <th>Valor(R$)</th>
             <th>Tipo</th>
+            <th>Data</th>
         </tr>
     </thead>
+    <tbody>
+        <tr>
+         <td>1</td>
+         <td>Eduardo</td>
+         <td>Lucas</td>
+         <td>100</td>
+         <td>PIX</td>
+         <td>01/01/2022</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr *ngFor="let transferencia of ">
+            <td>{{transferencia}}</td>
+            <td>{{transferencia}}</td>
+            <td>{{transferencia}}</td>
+            <td>{{transferencia}}</td>
+            <td>{{transferencia}}</td>
+            <td>{{transferencia}}</td>
+        </tr>
+    </tbody>
 </table>
 <ng-template #listaExtratoVazia>
     <div class="alert alert-info" >
