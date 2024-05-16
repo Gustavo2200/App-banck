@@ -1,0 +1,16 @@
+<table class="table table-striped" *ngIf="1==1, else listaExtratoVazia">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Pagador</th>
+            <th>Recebedor</th>
+            <th>Valor</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+</table>
+<ng-template #listaExtratoVazia>
+    <div class="alert alert-info" >
+        Não há nenhuma transferêcia 
+      </div>
+</ng-template>

@@ -8,6 +8,9 @@
             "name": "BancoDigital",
             "database": "railway",
             "username": "postgres"
+            "name": "FourBank",
+            "username": "postgres",
+            "database": "railway"
         }
     ]
 }
