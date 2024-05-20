@@ -24,8 +24,15 @@ export class LoginComponent {
   login(): void {
     this.loginService.logar(this.loginDados).pipe(
       catchError(error => {
+        
+        if(this.loginDados.login == '' || this.loginDados.password == '') {
+          this.errorMessage = 'Por favor, preencha todos os campos.';
+          console.error(this.errorMessage);// Imprime o erro no console
+          return of(null); // Continua o fluxo retornando um Observable nulo
+        }
+
         this.errorMessage = this.getErrorMessage(error.status);
-        console.error(this.errorMessage);
+        console.error(this.errorMessage);// Imprime o erro no console
         return of(null); // Continua o fluxo retornando um Observable nulo
       })
     ).subscribe(response => {
@@ -39,15 +46,15 @@ export class LoginComponent {
   private getErrorMessage(statusCode: number): string {
     switch (statusCode) {
       case 400:
-        return 'Solicitação inválida. Por favor, verifique os dados enviados.';
+        return 'Usuário ou senha inválidos. Por favor, verifique os dados enviados.';
       case 401:
-        return 'Não autorizado. Verifique suas credenciais.';
+        return 'Credenciais incorretas.';
       case 403:
-        return 'Proibido. Você não tem permissão para acessar este recurso.';
+        return 'Você não tem permissão para acessar este recurso.';
       case 404:
-        return 'Recurso não encontrado. Por favor, tente novamente mais tarde.';
+        return 'Recurso não encontrado.';
       case 500:
-        return 'Erro interno do servidor. Por favor, tente novamente mais tarde.';
+        return 'Ocorreu um problema no servidor. Por favor, tente novamente mais tarde.';
       default:
         return 'Ocorreu um erro desconhecido. Por favor, tente novamente.';
     }
