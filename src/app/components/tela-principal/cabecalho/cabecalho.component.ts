@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cabecalho',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './cabecalho.component.css'
 })
 export class CabecalhoComponent {
-
+  
+    getCurrentDate(): string {
+      return new Date().toLocaleDateString();
+    }
 }

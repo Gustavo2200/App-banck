@@ -1,10 +1,14 @@
 <app-cabecalho></app-cabecalho>
-<h1>Bem vindo, {{""}}</h1>
-<h2>R${{""}}</h2>
+<div class="h1">
+    <tr *ngFor="let conta of contas">
+<h1>Bem vindo,{{conta.nome}} </h1>
+<h2>R$ {{conta.saldo}}</h2>
+    </tr>
+</div>
 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-    <button type="button" class="btn btn-success">PIX</button>
-    <button type="button" class="btn btn-warning">TED</button>
+    <button routerLink="/pix" type="button" class="btn btn-success">PIX</button>
+    <button routerLink="/ted" type="button" class="btn btn-warning">TED</button>
 </div>
 <app-extrato></app-extrato>
+<br>
 <app-rodape></app-rodape>
-

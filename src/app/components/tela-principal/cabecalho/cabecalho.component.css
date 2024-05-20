@@ -1,6 +1,8 @@
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 10;
-    
+.ml-auto {
+    margin-left: auto !important; /* Define a margem esquerda como automática para alinhar o elemento à direita */
+    font-style: normal;
+    font-size: large;
+}
+.nav{
+    margin: 20px;
 }
