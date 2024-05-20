@@ -1,5 +1,7 @@
 export interface InfoTed {
-        agencia: Number;
-        conta: Number;
-        valor: Number;
+        agency: String;
+        accountNumber: String;
+        value: Number;
+
+        
 }
