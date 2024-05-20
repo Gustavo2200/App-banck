@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Conta } from '../../interfaces/request/Conta';
 import { ContaService } from '../../service/conta.service';
+
 @Component({
   selector: 'app-tela-principal',
   templateUrl: './tela-principal.component.html',
@@ -11,7 +12,7 @@ export class TelaPrincipalComponent {
 
   constructor(private contaService: ContaService){}
 ngOnInit(): void {
-  this.contaService.listar().subscribe((listaContas)=>{
+  this.contaService.accountInfo().subscribe((listaContas)=>{
     this.contas = listaContas;
   })
 }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class ModalSairContaComponent {
   constructor(private router: Router){}
 sair(){
-  this.router.navigate(['/login']);
+  this.router.navigate(["/login"]);
+  location.reload();
 }
 }

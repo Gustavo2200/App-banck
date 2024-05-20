@@ -12,7 +12,23 @@ export class ContaService {
 
   constructor(private http: HttpClient) { }
 
-  listar() : Observable<Conta[]>{
+  accountInfo() : Observable<Conta[]>{
     return this.http.get<Conta[]>(this.api+"/account-info");
+  }
+  getAccountInfo() {
+    this.accountInfo().subscribe(
+      (data: Conta[]) => {
+        const conta ={
+          customerName : data[0].nome,
+          accountNumber : data[0].numeroConta,
+          accountAgency: data[0].numeroAgencia
+        };
+        const jsonData = JSON.stringify(conta);
+        localStorage.setItem('accountInfo', jsonData);
+      },
+      (error) => {
+        console.error('Erro ao obter informações da conta:', error);
+      }
+    );
   }
 }

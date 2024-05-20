@@ -1,9 +1,7 @@
 <app-cabecalho></app-cabecalho>
 <div class="h1">
-    <tr *ngFor="let conta of contas">
-<h1>Bem vindo,{{conta.nome}} </h1>
-<h2>R$ {{conta.saldo}}</h2>
-    </tr>
+<h1>Bem vindo,{{contas[0].nome}} </h1>
+<h2>R$ {{contas[0].saldo}}</h2>
 </div>
 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
     <button routerLink="/pix" type="button" class="btn btn-success">PIX</button>
