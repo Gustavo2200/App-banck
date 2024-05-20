@@ -15,10 +15,12 @@ export class TelaDigiteValorComponent {
 
   constructor(private router: Router, private pixService: PixService, private route: ActivatedRoute) { }
 
+  contaLogada: any;
   valorTransferencia: number = 0;
   token: string = localStorage.getItem('token') || '';
   pixKey: string = '';
- contaDestinoResponse: ContaDestinoResponse | ErroResponse | null = null;
+  contaDestinoResponse!: ContaDestinoResponse | ErroResponse;
+  dadosContaDestino: any;
 
 
   ngOnInit(): void {
@@ -78,5 +80,9 @@ export class TelaDigiteValorComponent {
         let parteDecimal = numero.substring(numero.length - 2);
         input.value = parteInteira + ',' + parteDecimal;
     }
+}
+
+isContaDestinoResponse(response: ContaDestinoResponse | ErroResponse): response is ContaDestinoResponse {
+  return (response as ContaDestinoResponse).nameCustomer !== undefined;
 }
 }

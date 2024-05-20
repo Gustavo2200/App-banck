@@ -8,25 +8,23 @@
     </div>
     <div>
         <p>Pagador</p>
-        <h5>Gustavo</h5>
+        <h5>{{contaLogada.customerName}}</h5>
         <div>
-            <p class="reduzir-espacamento">CPF: 111.111.111-11</p>
-            <p class="reduzir-espacamento">Agência: 1234</p>
-            <p class="reduzir-espacamento">Conta: 123456</p>
+            <p class="reduzir-espacamento">Agência: {{contaLogada.accountAgency}}</p>
+            <p class="reduzir-espacamento">Conta: {{contaLogada.accountNumber}}</p>
         </div>
     </div>
     <hr/>
-    <div>
+    <div *ngIf="isContaDestinoResponse(contaDestinoResponse)">
         <p>Beneficiário</p>
-        <h5>Thiago</h5>
+        <h5>{{contaDestinoResponse.nameCustomer}}</h5>
         <div>
-          <p class="reduzir-espacamento">CPF: 222.222.222-22</p>
-          <p class="reduzir-espacamento">Agência: 4321</p>
-          <p class="reduzir-espacamento">Conta: 678901</p>
+          <p class="reduzir-espacamento">Agência: {{dadosContaDestino.accountAgency}}</p>
+          <p class="reduzir-espacamento">Conta: {{dadosContaDestino.accountNumber}}</p>
         </div>
       </div>
     <div>
         <button type="submit" class="btn btn-primary" (click)="confirmarTransferencia()">Está tudo certo</button>
-        <button type="submit" class="btn btn-danger" (click)="cancelarTransferencia()">Cancelar</button>
+        <button type="submit" class="btn btn-danger mx-3" (click)="cancelarTransferencia()">Cancelar</button>
     </div>
 </div>
