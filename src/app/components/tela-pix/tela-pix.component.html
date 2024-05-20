@@ -1,8 +1,9 @@
 
-<div class="p-4 div-mae">
-    <h2 class="text-center"> R$ {{conta.saldo}} </h2>
+<div class="p-4 div-mae tela-container">
+    <button class="botao-invisivel"><div class="mx-2 bg-icone bg-icone-voltar" (click)="voltar()"></div></button>
+    <h2 class="text-center"> R$ 3200,00 </h2>
     <div class="center-div">
-        <div class="container">
+        <div class="container center-div">
             <div class="item">
                 <button class="container" type="button" onclick="hendleClick('email')" data-bs-target="#ModalEmail" data-bs-toggle="modal">
                     <div class="mx-2 bg-icone bg-icone-email" onclick="hendleClick('email')"></div>
@@ -30,25 +31,26 @@
         </div>
     </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Registar chave</button>
-
-    <table class="table table-striped" *ngIf="chavesPix.length > 0 else semChaves">
+    <hr/>
+    <table class="table table-striped"*ngIf="chavesPix.length > 0, else semChaves">
         <thead>
             <tr>
                 <th>Tipo</th>
                 <th>Chave</th>
             </tr>
         </thead>
-        <tbody *ngFor="let chave of chavesPix">
+        <tbody *ngFor="let chave of chavesPix" >
             <tr >
-                <td>{{chave.tipo}}</td>
-                <td>{{chave.chave}}</td>
+                <td>{{chave.typePixKey}}</td>
+                <td>{{chave.pixKey}}</td>
             </tr>
         </tbody>
     </table>
 
-    <hr/>
     <ng-template #semChaves>
-        <div class="alert alert-warning" role="alert">Não há chaves registradas</div>
+        <div class="alert alert-warning" role="alert">
+            Não há chaves pix registradas
+        </div>
     </ng-template>
 
 </div>

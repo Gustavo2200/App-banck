@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { PixService } from '../../service/pix.service';
+import { ContaDestinoResponse } from '../../interfaces/response/ContaDestinoResponse';
+import { ErroResponse } from '../../interfaces/response/ErroResponse';
 
 @Component({
   selector: 'app-modal-destinatario-pix',
@@ -6,6 +10,29 @@ import { Component } from '@angular/core';
   styleUrl: './modal-destinatario-pix.component.css'
 })
 export class ModalDestinatarioPixComponent {
+
+  constructor(private pixService: PixService, private router: Router) {}
+
+   chavePix: string = '';
+   token: string = localStorage.getItem('token') || '';
+   conta: ContaDestinoResponse | null = null;
+   erroResponse: ErroResponse | null = null;
+
+   enviarTransferencia() {
+    this.pixService.buscarContaPorChavePix(this.chavePix, this.token).subscribe((response: ContaDestinoResponse | ErroResponse) => {
+      console.log(this.token);
+      
+      if ('status' in response) { // Erro
+        this.erroResponse = response;
+        console.log(this.erroResponse);
+        alert("Conta destino não encontrada, verifique a chave Pix e tente novamente");
+      } else { // Sucesso
+        this.conta = response;
+        console.log(this.conta);
+        this.router.navigate(['/confirmar-transferencia'], {queryParams:{key:this.chavePix}});
+      }
+    });
+  }
 
   formatarCelular(event: any) {
     let input = event.target as HTMLInputElement;

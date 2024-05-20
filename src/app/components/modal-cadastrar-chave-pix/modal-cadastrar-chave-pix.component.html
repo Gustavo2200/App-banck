@@ -6,12 +6,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <select name="chavePix" id="chavePix" class="form-select mb-3">
+        <select name="chavePix" id="chavePix" class="form-select mb-3" [(ngModel)]="chavePix">
           <option value="0">Selecione</option>
-          <option value="Email">Email</option>
-          <option value="Celular">Celular</option>
-          <option value="CPF">CPF</option>
-          <option value="Aleatoria">Aleatória</option>
+          <option value="email">Email</option>
+          <option value="phone">Celular</option>
+          <option value="cpf">CPF</option>
+          <option value="random">Aleatória</option>
         </select>
         <button type="button" class="btn btn-primary">Salvar</button>
       </div>

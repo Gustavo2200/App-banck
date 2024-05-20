@@ -1,0 +1,32 @@
+<div class="container tela-container">
+    <h4>Confirmar Transferecia</h4>
+
+    <div>
+        <label for="valor" class="form-label text-center">Valor:</label>
+        <input type="text" class="form-control mb-3" id="valor" value="0,00" (input)="formatarValor($event)" [(ngModel)]="valorTransferencia">
+        <hr/>
+    </div>
+    <div>
+        <p>Pagador</p>
+        <h5>Gustavo</h5>
+        <div>
+            <p class="reduzir-espacamento">CPF: 111.111.111-11</p>
+            <p class="reduzir-espacamento">Agência: 1234</p>
+            <p class="reduzir-espacamento">Conta: 123456</p>
+        </div>
+    </div>
+    <hr/>
+    <div>
+        <p>Beneficiário</p>
+        <h5>Thiago</h5>
+        <div>
+          <p class="reduzir-espacamento">CPF: 222.222.222-22</p>
+          <p class="reduzir-espacamento">Agência: 4321</p>
+          <p class="reduzir-espacamento">Conta: 678901</p>
+        </div>
+      </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="confirmarTransferencia()">Está tudo certo</button>
+        <button type="submit" class="btn btn-danger" (click)="cancelarTransferencia()">Cancelar</button>
+    </div>
+</div>

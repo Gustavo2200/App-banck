@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { PixKey } from '../../interfaces/response/PixKeyResponse';
+import { PixService } from '../../service/pix.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-pix',
@@ -6,9 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './tela-pix.component.css'
 })
 export class TelaPixComponent {
-
-  usuario: any
   conta: any
-  chavesPix: any[] = []
+  chavesPix: PixKey[] = []
+  token: string = localStorage.getItem('token') || ''
+  constructor(private pixService: PixService, private router: Router) {}
 
+  ngOnInit(): void {
+    localStorage.setItem('token', this.token);
+    this.pixService.listarChavesPix(this.token).subscribe((chavesPix) => {
+      this.chavesPix = chavesPix
+    })
+  }
+  voltar(){
+    this.router.navigate(['/tela-principal'])
+  }
 }
