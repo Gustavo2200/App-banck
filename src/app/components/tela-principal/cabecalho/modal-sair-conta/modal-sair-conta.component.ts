@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../../service/login.service';
 
 @Component({
   selector: 'app-modal-sair-conta',
@@ -7,9 +8,12 @@ import { Router } from '@angular/router';
   styleUrl: './modal-sair-conta.component.css'
 })
 export class ModalSairContaComponent {
-  constructor(private router: Router){}
+  constructor(private router: Router,private loginService: LoginService){}
 sair(){
-  this.router.navigate(["/login"]);
-  location.reload();
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+    setTimeout(() => {
+      location.reload();
+    }, 100);
 }
 }
