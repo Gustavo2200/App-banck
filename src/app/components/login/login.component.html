@@ -13,20 +13,23 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3 login-container">
                     <h2 class="text-center mb-4">Banco Digital</h2>
-                    <form>
+                    <p class="text-center mb-4" style="color: red">{{errorMessage}}</p>
+                    <form id="formulario">
+                        <!-- Email ou Cpf -->
                         <div class="form-group">
                             <label for="usuario" class="form-label">Email ou Cpf</label>
-                            <input type="text" class="form-control" id="usuario" placeholder="Digite seu Email ou Cpf" required>
+                            <input type="text" class="form-control" id="login" name="login" [(ngModel)]="loginDados.login" placeholder="Digite seu Email ou Cpf" required>
                         </div>
+                        <!-- Senha -->
                         <div class="form-group my-2">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+                            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="loginDados.password" placeholder="Digite sua senha" required>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto my-3 botao-entrar">
-                            <button type="submit" class="btn btn-primary btn-block ">Entrar</button>
+                            <button type="submit" class="btn btn-primary btn-block" (click)="login()">Entrar</button>
                         </div>
                         <div class="botao-cadastrar">
-                            <p>Ainda não tem conta?</p><a routerLink="cadastro" class="" style="margin-left: 10px;" >Cadastrar</a>
+                            <p>Ainda não tem conta?</p><a  class="" routerLink="/cadastro-cliente" style="margin-left: 10px;" >Cadastrar</a>
                         </div>
                     </form>
                 </div>
