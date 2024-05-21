@@ -129,4 +129,32 @@ export class CadastroClienteComponent {
     input.value = cpf;
   }
 
+  calcularDataNascimento(event: any) {
+    let input = event.target as HTMLInputElement;
+    let data = input.value;
+
+    if (data.length === 10) {
+      let dia = data.substring(0, 2);
+      let mes = data.substring(3, 5);
+      let ano = data.substring(6, 10);
+      let diaFormatado = Number.parseInt(dia);
+      let mesFormatado = Number.parseInt(mes);
+      let anoFormatado = Number.parseInt(ano);
+      let dataFormatada = new Date(anoFormatado, mesFormatado - 1, diaFormatado);
+
+      let hoje = new Date();
+      let idade = hoje.getFullYear() - anoFormatado;
+
+     if (hoje.getMonth() < mesFormatado - 1 || (hoje.getMonth() === mesFormatado - 1 && hoje.getDate() < diaFormatado)) {
+      idade--;
+    }
+    if(idade < 18){
+      alert("O cliente deve ter mais de 18 anos");
+      input.value ="";
+  }
+  else{
+    input.value = data;
+  }
+}
+}
 }

@@ -19,7 +19,11 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-   
+   ngOnInit(){
+    if(this.loginService.getToken() != null){
+      this.router.navigate(['/tela-principal']);
+    }
+   }
   
   login(): void {
     this.loginService.logar(this.loginDados).pipe(
