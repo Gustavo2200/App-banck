@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TelaPixComponent {
 
-  constructor() { }
+  
 
   usuario: any
   conta: any
@@ -25,7 +25,7 @@ export class TelaPixComponent {
   }
   voltar(){
     this.router.navigate(['/tela-principal'])
-  }
+  
 
   let token: string = localStorage.getItem('jwtToken') || ''
 
