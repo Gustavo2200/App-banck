@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class TelaPixComponent {
   conta: any
   chavesPix: PixKey[] = []
-  token: string = localStorage.getItem('token') || ''
+  token: string = ''
   constructor(private pixService: PixService, private router: Router) {}
 
   ngOnInit(): void {

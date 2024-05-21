@@ -3,7 +3,7 @@
 
     <div>
         <label for="valor" class="form-label text-center">Valor:</label>
-        <input type="text" class="form-control mb-3" id="valor" value="0,00" (input)="formatarValor($event)" [(ngModel)]="valorTransferencia">
+        <input type="text" class="form-control mb-3" id="valor" name="valor" value="0,00" (input)="formatarValor($event)"  [(ngModel)]="transferencia.value">
         <hr/>
     </div>
     <div>
@@ -15,7 +15,7 @@
         </div>
     </div>
     <hr/>
-    <div *ngIf="isContaDestinoResponse(contaDestinoResponse)">
+    <div>
         <p>Beneficiário</p>
         <h5>{{contaDestinoResponse.nameCustomer}}</h5>
         <div>

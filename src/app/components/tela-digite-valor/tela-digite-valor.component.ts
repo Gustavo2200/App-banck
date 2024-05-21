@@ -16,11 +16,17 @@ export class TelaDigiteValorComponent {
   constructor(private router: Router, private pixService: PixService, private route: ActivatedRoute) { }
 
   contaLogada: any;
+  transferencia: TransferenciaPix = {
+    pixKey: '',
+    value: 0,
+  }
   valorTransferencia: number = 0;
-  token: string = localStorage.getItem('token') || '';
-  pixKey: string = '';
-  contaDestinoResponse!: ContaDestinoResponse | ErroResponse;
-  dadosContaDestino: any;
+  token: string = '';
+  contaDestinoResponse!: ContaDestinoResponse;
+  dadosContaDestino: any ={
+    accountAgency: 4000,
+    accountNumber: 8000000,
+  }
 
 
   ngOnInit(): void {
@@ -30,16 +36,20 @@ export class TelaDigiteValorComponent {
       backGroundEscuro.remove();
     }
     this.route.params.subscribe((params) => {
-      this.pixKey = params['key'];
+      this.transferencia.pixKey = params['key'];
     });
-    this.pixService.buscarContaPorChavePix(this.pixKey, this.token).subscribe((response) => {
-      this.contaDestinoResponse = response;
+    this.pixService.buscarContaPorChavePix(this.transferencia.pixKey, this.token).subscribe((response) => {
+      if ('status' in response) {
+        alert(response.message);
+      } else {
+        this.contaDestinoResponse = response;
+      }
     });
 
   }
   confirmarTransferencia(){
-   const transferencia = this.gerarTransferencia();
-    this.pixService.transferenciaPix(transferencia,this.token).subscribe((response: TransferenciaPixResponse | ErroResponse)=>{
+
+    this.pixService.transferenciaPix(this.transferencia,this.token).subscribe((response: TransferenciaPixResponse | ErroResponse)=>{
 
       if ('status' in response){
         alert(response.message);
@@ -47,14 +57,6 @@ export class TelaDigiteValorComponent {
         alert("Transferecia concluída com sucesso");
       }
     })
-  }
-
-  gerarTransferencia(): TransferenciaPix{
-    const transferencia: TransferenciaPix = {
-      pixKey: this.pixKey,
-      value: this.valorTransferencia
-    }
-    return transferencia;
   }
 
   cancelarTransferencia(){
@@ -80,9 +82,5 @@ export class TelaDigiteValorComponent {
         let parteDecimal = numero.substring(numero.length - 2);
         input.value = parteInteira + ',' + parteDecimal;
     }
-}
-
-isContaDestinoResponse(response: ContaDestinoResponse | ErroResponse): response is ContaDestinoResponse {
-  return (response as ContaDestinoResponse).nameCustomer !== undefined;
 }
 }

@@ -14,7 +14,7 @@ export class ModalDestinatarioPixComponent {
   constructor(private pixService: PixService, private router: Router) {}
 
    chavePix: string = '';
-   token: string = localStorage.getItem('token') || '';
+   token: string = '';
    conta: ContaDestinoResponse | null = null;
    erroResponse: ErroResponse | null = null;
 
