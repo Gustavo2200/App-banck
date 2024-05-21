@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RodapeComponent } from './rodape.component';
+import { ModalSairContaComponent } from './modal-sair-conta.component';
 
-describe('RodapeComponent', () => {
-  let component: RodapeComponent;
-  let fixture: ComponentFixture<RodapeComponent>;
+describe('ModalSairContaComponent', () => {
+  let component: ModalSairContaComponent;
+  let fixture: ComponentFixture<ModalSairContaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RodapeComponent]
+      declarations: [ModalSairContaComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RodapeComponent);
+    fixture = TestBed.createComponent(ModalSairContaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

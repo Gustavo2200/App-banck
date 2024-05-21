@@ -9,11 +9,16 @@ import { Router } from '@angular/router';
   styleUrl: './tela-pix.component.css'
 })
 export class TelaPixComponent {
+
+  constructor() { }
+
+  usuario: any
   conta: any
   chavesPix: PixKey[] = []
   constructor(private pixService: PixService, private router: Router) {}
 
   ngOnInit(): void {
+
     this.pixService.listarChavesPix().subscribe((chavesPix) => {
       this.chavesPix = chavesPix
     })
@@ -21,4 +26,10 @@ export class TelaPixComponent {
   voltar(){
     this.router.navigate(['/tela-principal'])
   }
+
+  let token: string = localStorage.getItem('jwtToken') || ''
+
+  console.log(token)
+  }
+
 }
