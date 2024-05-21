@@ -7,8 +7,17 @@ import { Component } from '@angular/core';
 })
 export class TelaPixComponent {
 
+  constructor() { }
+
   usuario: any
   conta: any
   chavesPix: any[] = []
+
+  ngOnInit(): void {
+  let token: string = localStorage.getItem('jwtToken') || ''
+
+  console.log(token)
+  }
+
 
 }
