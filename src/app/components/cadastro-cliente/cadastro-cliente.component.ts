@@ -5,6 +5,7 @@ import { catchError, switchMap } from 'rxjs';
 import { ErroResponse } from '../../interfaces/response/ErroResponse';
 import { LoginService } from '../../service/login.service';
 import { LoginDados } from '../../interfaces/request/LoginDados';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -14,7 +15,7 @@ import { LoginDados } from '../../interfaces/request/LoginDados';
 export class CadastroClienteComponent {
 
   constructor(private clienteService: ClienteService, 
-    private loginService: LoginService) { }
+    private loginService: LoginService, private router: Router) { }
 
   novoCliente: NovoCliente = {
     name: '',
@@ -36,6 +37,7 @@ export class CadastroClienteComponent {
         .subscribe(
           () => {
             this.novaConta();
+            this.router.navigate(['/tela-principal']);
           },
           (error: ErroResponse[]) => {
             alert(error.map(error => error.message).join('\n'));
@@ -88,6 +90,43 @@ export class CadastroClienteComponent {
       this.camposNulos.push('CPF obrigatório');
     }
 
+  }
+
+  formatarCelular(event: any) {
+    let input = event.target as HTMLInputElement;
+    let numero = input.value.replace(/\D/g, '');
+ 
+    if (numero.length > 2) {
+      numero = '(' + numero.substring(0, 2) + ') ' + numero.substring(2);
+    }
+    if (numero.length > 8) {
+      numero = numero.substring(0, 9) + '-' + numero.substring(9);
+    }
+    if (numero.length > 14) {
+      numero = numero.substring(0, 14);
+    }
+ 
+    input.value = numero;
+  }
+
+  formatarCPF(event: any) {
+    let input = event.target as HTMLInputElement;
+    let cpf = input.value.replace(/\D/g, '');
+ 
+    if (cpf.length > 3) {
+      cpf = cpf.substring(0, 3) + '.' + cpf.substring(3);
+    }
+    if (cpf.length > 7) {
+      cpf = cpf.substring(0, 7) + '.' + cpf.substring(7);
+    }
+    if (cpf.length > 11) {
+      cpf = cpf.substring(0, 11) + '-' + cpf.substring(11);
+    }
+    if (cpf.length > 14) {
+      cpf = cpf.substring(0, 14);
+    }
+ 
+    input.value = cpf;
   }
 
 }
