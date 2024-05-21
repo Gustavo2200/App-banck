@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 export class ModalCadastrarChavePixComponent {
 
   chavePix: string = '';
-  token: string = '';
 
   constructor(private pixService: PixService, private router: Router) {}
 
   cadastrarChavePix(): void{
-    this.pixService.registarChavePix(this.chavePix, this.token);
-    this.router.navigate(['/pix']);
+    this.pixService.registarChavePix(this.chavePix).subscribe(()=>{
+      location.reload();
+    });
+    
   }
 
 }

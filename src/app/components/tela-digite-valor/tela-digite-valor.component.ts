@@ -5,6 +5,8 @@ import { TransferenciaPix } from '../../interfaces/request/TransferenciaPix';
 import { ContaDestinoResponse } from '../../interfaces/response/ContaDestinoResponse';
 import { ErroResponse } from '../../interfaces/response/ErroResponse';
 import { TransferenciaPixResponse } from '../../interfaces/response/TransferenciaPixResponse';
+import { DadosDestino } from '../../interfaces/response/DadosDestino';
+import { switchMap, of, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-tela-digite-valor',
@@ -16,45 +18,61 @@ export class TelaDigiteValorComponent {
   constructor(private router: Router, private pixService: PixService, private route: ActivatedRoute) { }
 
   contaLogada: any;
+  
   transferencia: TransferenciaPix = {
     pixKey: '',
     value: 0,
   }
   valorTransferencia: number = 0;
-  token: string = '';
   contaDestinoResponse!: ContaDestinoResponse;
-  dadosContaDestino: any ={
-    accountAgency: 4000,
-    accountNumber: 8000000,
-  }
+  dadosContaDestino!: DadosDestino
 
 
   ngOnInit(): void {
-    // Tira o fundo escuro que vem do modal anterior
+    // Remove o fundo escuro do modal anterior
     const backGroundEscuro = document.querySelector('.modal-backdrop');
     if (backGroundEscuro != null) {
       backGroundEscuro.remove();
     }
-    this.route.params.subscribe((params) => {
-      this.transferencia.pixKey = params['key'];
-    });
-    this.pixService.buscarContaPorChavePix(this.transferencia.pixKey, this.token).subscribe((response) => {
-      if ('status' in response) {
-        alert(response.message);
-      } else {
-        this.contaDestinoResponse = response;
-      }
-    });
+    this.route.queryParams.subscribe((params) => {
+        this.transferencia.pixKey = params['key'];
+        console.log(params['key']);
+        console.log(this.transferencia);
+      
+        this.pixService.buscarContaPorChavePix(params['key']).subscribe((response: ContaDestinoResponse | ErroResponse) => {
+          if ('status' in response) {
+            alert(response.message);
+          } else {
+            this.contaDestinoResponse = response;
+            console.log(this.contaDestinoResponse);
+          }
 
+          if(this.contaDestinoResponse){
+            this.pixService.buscarDadosContaDestino(this.contaDestinoResponse.idAccount).subscribe((response: DadosDestino | ErroResponse) => {
+              if ('status' in response) {
+                alert(response.message);
+              } else {
+                this.dadosContaDestino = response;
+                console.log(this.dadosContaDestino);
+              }
+            })
+          }
+        })
+    })
   }
   confirmarTransferencia(){
 
-    this.pixService.transferenciaPix(this.transferencia,this.token).subscribe((response: TransferenciaPixResponse | ErroResponse)=>{
 
+    console.log(this.transferencia)
+   
+    this.pixService.transferenciaPix(this.transferencia).subscribe((response: TransferenciaPixResponse | ErroResponse)=>{
+
+      console.log(this.transferencia)
       if ('status' in response){
         alert(response.message);
       } else{
         alert("Transferecia concluída com sucesso");
+        this.router.navigate(['/pix'])
       }
     })
   }
@@ -62,7 +80,7 @@ export class TelaDigiteValorComponent {
   cancelarTransferencia(){
     this.router.navigate(['/pix'])
   }
-  formatarValor(event: any) {
+  mascaraValor(event: any) {
     let input = event.target as HTMLInputElement;
     let numero = input.value.replace(/\D/g, '');
 
@@ -82,5 +100,14 @@ export class TelaDigiteValorComponent {
         let parteDecimal = numero.substring(numero.length - 2);
         input.value = parteInteira + ',' + parteDecimal;
     }
+    this.transferencia.value = this.formatarValor(numero);
+}
+
+formatarValor(valor: string): number {
+  let valorSemFormato = valor.replace(/\D/g, '').replace(/,/g, '');
+  let valorNumerico = parseFloat(valorSemFormato);
+  let valorParaRequisicao = valorNumerico.toFixed(2);
+
+  return parseFloat(valorParaRequisicao) / 100;
 }
 }

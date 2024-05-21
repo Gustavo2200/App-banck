@@ -7,6 +7,7 @@ import { ContaDestinoResponse } from '../interfaces/response/ContaDestinoRespons
 import { TransferenciaPix } from '../interfaces/request/TransferenciaPix';
 import { TransferenciaPixResponse } from '../interfaces/response/TransferenciaPixResponse';
 import { ErroResponse } from '../interfaces/response/ErroResponse';
+import { DadosDestino } from '../interfaces/response/DadosDestino';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,19 @@ import { ErroResponse } from '../interfaces/response/ErroResponse';
 export class PixService {
 
   private readonly api = "https://fourcamp.up.railway.app/api-fourbank";
+  private token:string = ''
+
   constructor(private http: HttpClient) { }
 
-  listarChavesPix(token: string) :Observable<PixKey[]> {
+  listarChavesPix() :Observable<PixKey[]> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
     return this.http.get<PixKey[]>(this.api + "/my-pix-keys", { headers });
   }
-  buscarContaPorChavePix(chavePix: string, token: string) :Observable<ContaDestinoResponse | ErroResponse> {
+  buscarContaPorChavePix(chavePix: string) :Observable<ContaDestinoResponse | ErroResponse> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
     return this.http.get<ContaDestinoResponse>(this.api + "/find-account/pix?key=" + chavePix, { headers }).pipe(
       catchError((error) =>{
@@ -38,16 +41,16 @@ export class PixService {
       })
     )
   }
-  registarChavePix(tipoChave: string, token: string): void{
+  registarChavePix(tipoChave: string): Observable<void>{
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
-    this.http.post<void>(this.api + "/save-pix-key?type_key=" + tipoChave, {}, { headers });
+    return this.http.post<void>(this.api + "/save-pix-key?type_key=" + tipoChave, {}, { headers });
   }
 
-  transferenciaPix(transferenciaPix: TransferenciaPix, token: string): Observable<TransferenciaPixResponse | ErroResponse> {
+  transferenciaPix(transferenciaPix: TransferenciaPix): Observable<TransferenciaPixResponse | ErroResponse> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
     return this.http.post<TransferenciaPixResponse>(this.api + "/transaction/pix", transferenciaPix, { headers }).pipe(
       catchError((error) =>{
@@ -61,4 +64,21 @@ export class PixService {
       })
     );
 }
+
+  buscarDadosContaDestino(idConta: number): Observable<DadosDestino | ErroResponse>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get<DadosDestino>(this.api + "/find-account?id=" + idConta, { headers }).pipe(
+      catchError((error) =>{
+        const erroResponse: ErroResponse = {
+          status: error.status,
+          message: error.error.message,
+          path: error.url,
+          timestamp: new Date().toISOString()
+        }
+        return of(erroResponse);
+      })
+    )
+  }
 }

@@ -14,13 +14,12 @@ export class ModalDestinatarioPixComponent {
   constructor(private pixService: PixService, private router: Router) {}
 
    chavePix: string = '';
-   token: string = '';
+  
    conta: ContaDestinoResponse | null = null;
    erroResponse: ErroResponse | null = null;
 
    enviarTransferencia() {
-    this.pixService.buscarContaPorChavePix(this.chavePix, this.token).subscribe((response: ContaDestinoResponse | ErroResponse) => {
-      console.log(this.token);
+    this.pixService.buscarContaPorChavePix(this.chavePix).subscribe((response: ContaDestinoResponse | ErroResponse) => {
       
       if ('status' in response) { // Erro
         this.erroResponse = response;
@@ -29,7 +28,7 @@ export class ModalDestinatarioPixComponent {
       } else { // Sucesso
         this.conta = response;
         console.log(this.conta);
-        this.router.navigate(['/confirmar-transferencia'], {queryParams:{key:this.chavePix}});
+        this.router.navigate(['/confirmar-transferencia'], { queryParams: { key: this.chavePix } });
       }
     });
   }
