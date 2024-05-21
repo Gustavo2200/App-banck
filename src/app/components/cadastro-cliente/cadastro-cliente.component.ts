@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, booleanAttribute } from '@angular/core';
 import { NovoCliente } from '../../interfaces/request/NovoCliente';
 import { ClienteService } from '../../service/cliente.service';
 import { catchError, switchMap } from 'rxjs';
@@ -37,7 +37,7 @@ export class CadastroClienteComponent {
         .subscribe(
           () => {
             this.novaConta();
-            this.router.navigate(['/tela-principal']);
+            this.router.navigate(['/login']);
           },
           (error: ErroResponse[]) => {
             alert(error.map(error => error.message).join('\n'));
@@ -56,7 +56,7 @@ export class CadastroClienteComponent {
     };
     this.loginService.logar(loginDados)
       .pipe(
-        switchMap(() => this.clienteService.gerarConta(this.loginService.getToken())),
+        switchMap(() => this.clienteService.gerarConta(localStorage.getItem('jwtToken'))),
       )
       .subscribe(
         response => {
@@ -90,9 +90,13 @@ export class CadastroClienteComponent {
       this.camposNulos.push('CPF obrigatório');
     }
 
+    
+    if (this.calcularIdade(this.novoCliente.dateBirth.toString()) < 18) {
+      this.camposNulos.push('Você deve ter mais de 18 anos');
+    }
   }
 
-  formatarCelular(event: any) {
+  formatarCelular (event: any) {
     let input = event.target as HTMLInputElement;
     let numero = input.value.replace(/\D/g, '');
  
@@ -129,32 +133,11 @@ export class CadastroClienteComponent {
     input.value = cpf;
   }
 
-  calcularDataNascimento(event: any) {
-    let input = event.target as HTMLInputElement;
-    let data = input.value;
-
-    if (data.length === 10) {
-      let dia = data.substring(0, 2);
-      let mes = data.substring(3, 5);
-      let ano = data.substring(6, 10);
-      let diaFormatado = Number.parseInt(dia);
-      let mesFormatado = Number.parseInt(mes);
-      let anoFormatado = Number.parseInt(ano);
-      let dataFormatada = new Date(anoFormatado, mesFormatado - 1, diaFormatado);
-
-      let hoje = new Date();
-      let idade = hoje.getFullYear() - anoFormatado;
-
-     if (hoje.getMonth() < mesFormatado - 1 || (hoje.getMonth() === mesFormatado - 1 && hoje.getDate() < diaFormatado)) {
-      idade--;
-    }
-    if(idade < 18){
-      alert("O cliente deve ter mais de 18 anos");
-      input.value ="";
+  calcularIdade(dataNascimento: string): number {
+    const dataNasc = new Date(dataNascimento);
+    const hoje = new Date();
+    const diferencaEmMilissegundos = hoje.getTime() - dataNasc.getTime();
+    const idadeEmAnos = Math.floor(diferencaEmMilissegundos / (365.25 * 24 * 60 * 60 * 1000));
+    return idadeEmAnos;
   }
-  else{
-    input.value = data;
-  }
-}
-}
 }
