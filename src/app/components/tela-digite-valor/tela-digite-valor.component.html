@@ -1,0 +1,34 @@
+<div class="container tela-container">
+    <h4>Confirmar Transferecia</h4>
+
+    <div>
+        <label for="valor" class="form-label text-center">Valor:</label>
+        <input type="text" class="form-control mb-3" id="valor" name="valor" value="0,00" (input)="mascaraValor($event)"S>
+        <hr/>
+    </div>
+    <div>
+        <p>Pagador</p>
+        <h5>Gusstavo</h5>
+        <div>
+            <p class="reduzir-espacamento">Agência: </p>
+            <p class="reduzir-espacamento">Conta:</p>
+        </div>
+    </div>
+    <hr/>
+    <div>
+        <p>Beneficiário</p>
+        <h5 *ngIf="contaDestinoResponse">{{ contaDestinoResponse.nameCustomer }}</h5>
+        <h5 *ngIf="!contaDestinoResponse">Carregando dados...</h5>
+        <div>
+          <p class="reduzir-espacamento" *ngIf="dadosContaDestino">Agência: {{ dadosContaDestino.accountAgency}} </p>
+          <p class="reduzir-espacamento" *ngIf="!dadosContaDestino">Carregando dados...</p>
+
+          <p class="reduzir-espacamento" *ngIf="dadosContaDestino">Conta: {{ dadosContaDestino.accountNumber}} </p>
+          <p class="reduzir-espacamento" *ngIf="!dadosContaDestino">Carregando dados...</p>
+        </div>
+      </div>
+    <div class="my-3">
+        <button type="submit" class="btn btn-primary" (click)="confirmarTransferencia()">Está tudo certo</button>
+        <button type="submit" class="btn btn-danger mx-3" (click)="cancelarTransferencia()">Cancelar</button>
+    </div>
+</div>
