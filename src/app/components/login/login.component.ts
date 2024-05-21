@@ -37,7 +37,7 @@ export class LoginComponent {
       })
     ).subscribe(response => {
       if (response) {
-        this.router.navigate(['/pix']);
+        this.router.navigate(['/tela-principal']);
         this.errorMessage = '';
       }
     });

@@ -8,12 +8,17 @@ import { ContaService } from '../../service/conta.service';
   styleUrl: './tela-principal.component.css'
 })
 export class TelaPrincipalComponent {
-  contas : Conta [] = []
+  conta : Conta = {
+    customerName: "" ,
+    accountNumber: "",
+    accountAgency: "",
+    value: 0.0
+  };
 
   constructor(private contaService: ContaService){}
 ngOnInit(): void {
-  this.contaService.accountInfo().subscribe((listaContas)=>{
-    this.contas = listaContas;
+  this.contaService.accountInfo().subscribe((getConta)=>{
+    this.conta = getConta;
   })
 }
 }

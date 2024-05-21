@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Transferencia } from '../interfaces/request/Transferencia';
 import { Observable } from 'rxjs';
@@ -13,6 +13,10 @@ export class TransferenciaService {
   constructor(private http: HttpClient) { }
 
   listar() : Observable<Transferencia[]>{
-    return this.http.get<Transferencia[]>(this.api+"/transaction/history");
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Transferencia[]>(this.api+"/transaction/history", { headers: headers });
   }
 }
