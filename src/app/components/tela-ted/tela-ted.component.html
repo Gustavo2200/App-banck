@@ -5,20 +5,20 @@
         <hr>
     </div>
     <div class="mx-3 py-3">
-      <label for="numeroConta" class="form-label">Número da conta destino:</label>
-      <input type="text" class="form-control" id="numeroConta">
+      <label for="numeroConta"  class="form-label">Número da conta destino:</label>
+      <input type="text" name="numeroConta" class="form-control" id="numeroConta" [(ngModel)]="infoTed.accountNumber" required>
       <div id="contaHelp" class="form-text">O número deve conter 8 dígitos</div>
     </div>
     <div class="mx-3 py-3">
-      <label for="agencia" class="form-label">Agência:</label>
-      <input type="text" class="form-control" id="agencia">
+      <label for="agencia"  class="form-label">Agência:</label>
+      <input type="text" name="agencia" class="form-control" id="agencia" [(ngModel)]="infoTed.agency" required>
       <div id="agenciaHelp" class="form-text">O número deve conter 4 dígitos</div>
     </div>
     <div class="mx-3 py-3">
-        <label for="valor" class="form-label">Valor da transferência:</label>
-        <input type="number" class="form-control" id="valor">
+        <label for="valor"  class="form-label">Valor da transferência:</label>
+        <input type="number" name="valor" class="form-control" id="valor" [(ngModel)]="infoTed.value" required>
         
       </div>
-    <button type="submit" class="btn btn-warning mx-3 btn-sm btn-block mt-3">Efetuar transferência</button>
+    <button (click)="transferir()" type="submit" class="btn btn-warning mx-3 btn-sm btn-block mt-3">Efetuar transferência</button>
   </div>
 </form>
