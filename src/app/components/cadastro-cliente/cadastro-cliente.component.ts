@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NovoCliente } from '../../interfaces/request/NovoCliente';
 import { ClienteService } from '../../service/cliente.service';
-import { catchError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs';
 import { ErroResponse } from '../../interfaces/response/ErroResponse';
+import { LoginService } from '../../service/login.service';
+import { LoginDados } from '../../interfaces/request/LoginDados';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -11,7 +13,8 @@ import { ErroResponse } from '../../interfaces/response/ErroResponse';
 })
 export class CadastroClienteComponent {
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService, 
+    private loginService: LoginService) { }
 
   novoCliente: NovoCliente = {
     name: '',
@@ -28,20 +31,39 @@ export class CadastroClienteComponent {
 
   cadastrar() {
     this.validarCampos();
-    if (this.camposNulos.length == 0) {
+    if (this.camposNulos.length === 0) {
       this.clienteService.cadastrarCliente(this.novoCliente)
         .subscribe(
           () => {
-            alert('Cadastrado com sucesso!');
+            this.novaConta();
           },
           (error: ErroResponse[]) => {
             alert(error.map(error => error.message).join('\n'));
-            this.erros = error
+            this.erros = error;
           }
-        )
-    }else{
+        );
+    } else {
       alert(this.camposNulos.join('\n'));
     }
+  }
+
+  novaConta() {
+    const loginDados: LoginDados = {
+      login: this.novoCliente.email,
+      password: this.novoCliente.password
+    };
+    this.loginService.logar(loginDados)
+      .pipe(
+        switchMap(() => this.clienteService.gerarConta(this.loginService.getToken())),
+      )
+      .subscribe(
+        response => {
+          console.log('Conta gerada com sucesso:', response);
+        },
+        error => {
+          console.error('Erro ao gerar a conta:', error);
+        }
+      );
   }
 
   validarCampos() {

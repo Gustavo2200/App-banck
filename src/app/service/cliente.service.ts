@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NovoCliente } from '../interfaces/request/NovoCliente';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ErroResponse } from '../interfaces/response/ErroResponse';
 
@@ -18,6 +18,17 @@ export class ClienteService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  gerarConta(token: String | null){
+    console.log(token)
+    const headers = {
+      Authorization: `Bearer ${token}`
+    }
+
+    
+    return this.http.post(this.api+"/save-account", {}, { headers });
+
   }
 
   private handleError(error: HttpErrorResponse): Observable<ErroResponse[]> {
