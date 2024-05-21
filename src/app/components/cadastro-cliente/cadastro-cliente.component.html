@@ -15,7 +15,7 @@
         <!-- Telefone -->
         <div class="form-group">
             <label for="phone">Telefone</label>
-            <input type="text" class="form-control" id="phone" name="phone" 
+            <input (input)="formatarCelular($event)" type="text" class="form-control" id="phone" name="phone" 
             [(ngModel)]="novoCliente.phone">
         </div>
 
@@ -28,7 +28,7 @@
         <!-- CPF -->
         <div class="form-group">
             <label for="cpf">CPF</label>
-            <input type="text" class="form-control" id="cpf" name="cpf"
+            <input (input)="formatarCPF($event)" type="text" class="form-control" id="cpf" name="cpf"
             [(ngModel)]="novoCliente.cpf">
         </div>
         <!-- Data de Nascimento -->
@@ -41,7 +41,7 @@
             <button (click)="cadastrar()" type="submit" class="btn btn-primary">Cadastrar</button>
         </div>
         <div class="form-group">
-            <a href="#">Ja tenho uma conta</a>
+            <a href="" routerLink="/login">Ja tenho uma conta</a>
         </div>
     </form>
 </div>
