@@ -30,9 +30,14 @@ export class TelaTedComponent {
     if(this.infoTed.agency.length == 4 && this.infoTed.accountNumber.length == 8 && this.infoTed.value.valueOf() > 0) {
       let token: string = localStorage.getItem('jwtToken') || '';
       this.infoTedService.transferir(this.infoTed, token).subscribe(
-      
       (data: TedResponse) => {
         this.tedResponse = data
+        alert('Transferência efetuada com sucesso!\n' + 
+        'Conta destino: ' + this.tedResponse.customerNameDestiny + '\n' +
+        'Conta origem: ' + this.tedResponse.customerNameOrigin + '\n' + 
+        'Data da transação: ' + this.tedResponse.dateTransaction + '\n' + 
+        'Valor da transação: ' + this.tedResponse.value
+        )
       }, (error: ErroResponse) => {
         alert(error.message)
       }

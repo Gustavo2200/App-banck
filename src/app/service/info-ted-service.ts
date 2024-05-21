@@ -14,12 +14,18 @@ export class InfoTedService {
 
   constructor(private http: HttpClient) { }
 
-  transferir(infoTed: InfoTed, token: string): Observable<TedResponse | ErroResponse> {
+  transferir(infoTed: InfoTed, token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.post<TedResponse>(this.api, infoTed, { headers }).pipe(map(response=>{return response as TedResponse;}),catchError(this.handleError));
+    return this.http.post<TedResponse>(this.api, infoTed, { headers })
+    .pipe(
+      map(
+        response => {
+          return response
+        }),
+        catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse): Observable<ErroResponse> {
