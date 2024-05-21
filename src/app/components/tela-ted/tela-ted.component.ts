@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { InfoTedService } from '../../service/info-ted-service';
 import { InfoTed } from '../../interfaces/request/InfoTed';
+import { ErroResponse } from '../../interfaces/response/ErroResponse';
+import { TedResponse } from '../../interfaces/request/TedResponse';
 
 
 @Component({
@@ -13,8 +15,9 @@ export class TelaTedComponent {
 
   constructor(private infoTedService: InfoTedService) { }
 
-  token: string = "";
+  tedResponse: TedResponse | null = null
   
+  erroResponse!: ErroResponse
   
   infoTed: InfoTed = {
     accountNumber: "",
@@ -23,19 +26,21 @@ export class TelaTedComponent {
   }
 
   transferir() {
+
     if(this.infoTed.agency.length == 4 && this.infoTed.accountNumber.length == 8 && this.infoTed.value.valueOf() > 0) {
+      let token: string = localStorage.getItem('jwtToken') || '';
+      this.infoTedService.transferir(this.infoTed, token).subscribe(
       
-    if(this.infoTedService.transferir(this.infoTed, this.token).subscribe(
-      (response ) => {
-        alert(response)
-      }, (error) => alert(error)
-    )) {
-        alert("Transferência efetuada com sucesso!")
-      }else{
-        alert("Erro ao efetuar transferência!")
+      (data: TedResponse) => {
+        this.tedResponse = data
+      }, (error: ErroResponse) => {
+        alert(error.message)
       }
-    }else if(this.infoTed.agency.length != 4 || this.infoTed.accountNumber.length != 8 || this.infoTed.value.valueOf() <= 0) {
-      alert("Verifique os dados e tente novamente!")
+    )
+
+
+
+    } else {
     }
   }
 }

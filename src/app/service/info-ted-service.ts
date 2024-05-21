@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { InfoTed } from '../interfaces/request/InfoTed';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of, throwError } from 'rxjs';
 import { ErroResponse } from '../interfaces/response/ErroResponse';
+import { TedResponse } from '../interfaces/request/TedResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,19 @@ export class InfoTedService {
 
   constructor(private http: HttpClient) { }
 
-  transferir(infoTed: InfoTed, token: string):Observable<InfoTed | ErroResponse> {
+  transferir(infoTed: InfoTed, token: string): Observable<TedResponse | ErroResponse> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.post<InfoTed>(this.api, infoTed, {headers}).pipe( catchError((error) =>{
-      const erroResponse: ErroResponse = {
-        status: error.status,
-        message: error.message,
-        path: error.url,
-        timestamp: new Date().toISOString()
-      }
-      return of(erroResponse);
-    }))
-  }           
+    return this.http.post<TedResponse>(this.api, infoTed, { headers }).pipe(map(response=>{return response as TedResponse;}),catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<ErroResponse> {
+    let apiError: ErroResponse = { status: error.status, message: error.error?.message, path: '' , timestamp: new Date().toISOString() }; return throwError(apiError);
+  }
+/*
+  private handleResponse(response:  TedResponse): Observable<TedResponse> {
+    let apiResponse: TedResponse = { customerNameDestiny: response.customerNameDestiny, customerNameOrigin: response.customerNameOrigin, idTransaction: response.idTransaction, typeTransaction: response.typeTransaction , dateTransaction: response.dateTransaction , value: response.value}; return of(apiResponse);
+  }*/
 }
