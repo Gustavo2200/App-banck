@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CabecalhoComponent } from './components/tela-principal/cabecalho/cabecalho.component';
 import { RodapeComponent } from './components/tela-principal/rodape/rodape.component';
 import { ModalSairContaComponent } from './components/tela-principal/cabecalho/modal-sair-conta/modal-sair-conta.component';
+import { CommonModule } from '@angular/common';
+import { TelaDigiteValorComponent } from './components/tela-digite-valor/tela-digite-valor.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,15 @@ import { ModalSairContaComponent } from './components/tela-principal/cabecalho/m
     ModalSairContaComponent,
     RodapeComponent,
     ExtratoComponent,
-    CadastroClienteComponent
+    CadastroClienteComponent,
+    TelaDigiteValorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

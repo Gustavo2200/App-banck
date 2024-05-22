@@ -10,10 +10,6 @@ import { Router } from '@angular/router';
 })
 export class TelaPixComponent {
 
-  
-
-  usuario: any
-  conta: any
   chavesPix: PixKey[] = []
   constructor(private pixService: PixService, private router: Router) {}
 

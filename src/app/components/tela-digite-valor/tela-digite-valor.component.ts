@@ -7,6 +7,8 @@ import { ErroResponse } from '../../interfaces/response/ErroResponse';
 import { TransferenciaPixResponse } from '../../interfaces/response/TransferenciaPixResponse';
 import { DadosDestino } from '../../interfaces/response/DadosDestino';
 import { switchMap, of, catchError } from 'rxjs';
+import { ContaService } from '../../service/conta.service';
+import { Conta } from '../../interfaces/request/Conta';
 
 @Component({
   selector: 'app-tela-digite-valor',
@@ -15,9 +17,9 @@ import { switchMap, of, catchError } from 'rxjs';
 })
 export class TelaDigiteValorComponent {
 
-  constructor(private router: Router, private pixService: PixService, private route: ActivatedRoute) { }
+  constructor(private contaService: ContaService, private router: Router, private pixService: PixService, private route: ActivatedRoute) { }
 
-  contaLogada: any;
+  contaLogada!: Conta;
   
   transferencia: TransferenciaPix = {
     pixKey: '',
@@ -57,6 +59,9 @@ export class TelaDigiteValorComponent {
               }
             })
           }
+          this.contaService.accountInfo().subscribe((conta) =>{
+            this.contaLogada = conta;
+          })
         })
     })
   }
