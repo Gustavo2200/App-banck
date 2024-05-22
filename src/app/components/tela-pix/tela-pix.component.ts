@@ -26,6 +26,9 @@ export class TelaPixComponent {
       })
     })
   }
+  formatarMoeda(): string{
+    return this.conta.value.toFixed(2).replace('.',',');
+  }
   voltar(){
     this.router.navigate(['/tela-principal'])
   

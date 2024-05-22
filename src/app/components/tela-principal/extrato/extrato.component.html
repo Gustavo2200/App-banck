@@ -20,7 +20,7 @@
     <tbody>
         <tr *ngFor="let transferencia of historico">
             <td>{{transferencia.flag}}</td>
-            <td>{{transferencia.dateTransaction}}</td>
+            <td>{{transferencia.dateTransaction | date: 'dd/MM/yyyy'}}</td>
             <td>{{transferencia.value}}</td>
             <td>{{transferencia.originDestiny}}</td>
             <td>{{transferencia.typeTransaction}}</td>

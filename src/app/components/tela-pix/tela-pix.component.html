@@ -1,11 +1,11 @@
 
 <div class="p-4 div-mae tela-container">
     <button class="botao-invisivel"><div class="mx-2 bg-icone bg-icone-voltar" (click)="voltar()"></div></button>
-    <h2 class="text-center" *ngIf="conta">R$ {{conta.value}}</h2>
+    <h2 class="text-center" *ngIf="conta">R$ {{formatarMoeda()}}</h2>
     <h2 class="text-center" *ngIf="!conta">Carregando...</h2>
     <div class="center-div">
-        <div class="container center-div">
-            <div class="item">
+        <div class="container">
+            <div class="item center-div">
                 <button class="container" type="button" data-bs-target="#ModalEmail" data-bs-toggle="modal">
                     <div class="mx-2 bg-icone bg-icone-email"></div>
                     Email
