@@ -1,0 +1,8 @@
+.table{
+    max-width: 90%;
+    margin: 0 auto;
+    border: 15px solid  #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #fcfbfb;
+}

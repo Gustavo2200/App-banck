@@ -20,6 +20,7 @@ export class LoginService {
 
     return this.http.post<Token>(this.urlLogin, loginDados).pipe(
       tap(response => {
+        
         localStorage.setItem('jwtToken', response.token);
       })
     );

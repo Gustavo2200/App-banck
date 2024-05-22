@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CabecalhoComponent } from './cabecalho.component';
+import { ModalSairContaComponent } from './modal-sair-conta.component';
 
-describe('CabecalhoComponent', () => {
-  let component: CabecalhoComponent;
-  let fixture: ComponentFixture<CabecalhoComponent>;
+describe('ModalSairContaComponent', () => {
+  let component: ModalSairContaComponent;
+  let fixture: ComponentFixture<ModalSairContaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CabecalhoComponent]
+      declarations: [ModalSairContaComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CabecalhoComponent);
+    fixture = TestBed.createComponent(ModalSairContaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

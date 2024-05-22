@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RodapeComponent } from './rodape.component';
+import { TelaDigiteValorComponent } from './tela-digite-valor.component';
 
-describe('RodapeComponent', () => {
-  let component: RodapeComponent;
-  let fixture: ComponentFixture<RodapeComponent>;
+describe('TelaDigiteValorComponent', () => {
+  let component: TelaDigiteValorComponent;
+  let fixture: ComponentFixture<TelaDigiteValorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RodapeComponent]
+      declarations: [TelaDigiteValorComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RodapeComponent);
+    fixture = TestBed.createComponent(TelaDigiteValorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
