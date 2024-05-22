@@ -7,7 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabecalhoComponent {
   
-    getCurrentDate(): string {
-      return new Date().toLocaleDateString();
-    }
+  
 }
