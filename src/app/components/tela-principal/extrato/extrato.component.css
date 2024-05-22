@@ -1,11 +1,10 @@
-/* Container principal */
+/* Estilos de container e cabeçalho (já existentes) */
 .container {
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
   }
   
-  /* Cabeçalho */
   .header {
     background-color: #007bff;
     color: white;
@@ -17,14 +16,12 @@
     margin-top: 10px;
   }
   
-  /* Conteúdo principal */
   .main-content {
     display: flex;
     flex-direction: row;
     margin: 20px;
   }
   
-  /* Barra lateral */
   .sidebar {
     width: 20%;
     background-color: #f8f9fa;
@@ -46,23 +43,33 @@
     background-color: #e2e6ea;
   }
   
-  /* Conteúdo */
   .content {
-    width: 80%;
+    width: 100%;
     padding: 20px;
   }
   
-  /* Seção de extrato */
   .extrato-section {
     background-color: #e9ecef;
     padding: 20px;
     border-radius: 5px;
   }
   
-  /* Estilo da tabela */
+  .scrollable-table {
+    max-height: 400px; /* Defina a altura máxima para o contêiner rolável */
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .scrollable-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #007bff;
+    color: white;
+    z-index: 1;
+  }
+  
   .table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
   }
   
@@ -70,11 +77,6 @@
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #dee2e6;
-  }
-  
-  .table th {
-    background-color: #007bff;
-    color: white;
   }
   
   .table-striped tbody tr:nth-of-type(odd) {
@@ -99,5 +101,14 @@
     background-color: #d9edf7;
     border-color: #bce8f1;
     color: #31708f;
+  }
+  
+  /* Novos estilos para tipo de transferência */
+  .entrada {
+    color: green;
+  }
+  
+  .saida {
+    color: red;
   }
   
