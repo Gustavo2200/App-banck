@@ -1,4 +1,33 @@
 <table class="table table-striped" *ngIf="historico.length >0, else listaExtratoVazia">
+
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Valor(R$)</th>
+            <th>Recebedor/Pagador</th>
+            <th>Forma de Pagamento</th>
+        </tr>
+    </thead>
+  <!--  <tbody>
+        <tr>
+         <td>Saida</td>
+         <td>01/01/2022</td>
+         <td>100</td>
+         <td>Lucas</td>
+         <td>PIX</td>
+        </tr>
+    </tbody> -->
+    <tbody>
+        <tr *ngFor="let transferencia of historico">
+            <td>{{transferencia.flag}}</td>
+            <td>{{transferencia.dateTransaction | date: 'dd/MM/yyyy'}}</td>
+            <td>{{transferencia.value}}</td>
+            <td>{{transferencia.originDestiny}}</td>
+            <td>{{transferencia.typeTransaction}}</td>
+        </tr>
+    </tbody>
+</table>
             <thead>
                 <tr>
                     <th>Tipo</th>
@@ -27,6 +56,7 @@
                 </tr>
             </tbody>
         </table>
+
 <ng-template #listaExtratoVazia>
     <div class="alert alert-info">
         Não há nenhuma transferêcia 

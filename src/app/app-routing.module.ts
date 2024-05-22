@@ -5,6 +5,8 @@ import { ModalCadastrarChavePixComponent } from './components/modal-cadastrar-ch
 import { LoginComponent } from './components/login/login.component';
 import { CadastroClienteComponent } from './components/cadastro-cliente/cadastro-cliente.component';
 import { TelaPrincipalComponent } from './components/tela-principal/tela-principal.component';
+import { TelaTedComponent } from './components/tela-ted/tela-ted.component';
+import { TelaDigiteValorComponent } from './components/tela-digite-valor/tela-digite-valor.component';
 
 const routes: Routes = [
   {
@@ -12,8 +14,8 @@ const routes: Routes = [
     component: TelaPixComponent
   },
   {
-    path: "cadastrar-chave-pix",
-    component: ModalCadastrarChavePixComponent
+    path: "confirmar-transferencia",
+    component: TelaDigiteValorComponent
   },
   {
     path:"login",
@@ -28,10 +30,15 @@ const routes: Routes = [
     component: TelaPrincipalComponent
   },
   {
+    path: "ted",
+    component: TelaTedComponent
+  },
+  {
     path: "",
     redirectTo: "login",
     pathMatch: "full"
-  }
+  },
+  
 ];
 
 @NgModule({
