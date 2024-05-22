@@ -1,33 +1,23 @@
-<table class="table table-striped" *ngIf="historico.length >0, else listaExtratoVazia">
-
-    <thead>
-        <tr>
-            <th>Tipo</th>
-            <th>Data</th>
-            <th>Valor(R$)</th>
-            <th>Recebedor/Pagador</th>
-            <th>Forma de Pagamento</th>
-        </tr>
-    </thead>
-  <!--  <tbody>
-        <tr>
-         <td>Saida</td>
-         <td>01/01/2022</td>
-         <td>100</td>
-         <td>Lucas</td>
-         <td>PIX</td>
-        </tr>
-    </tbody> -->
-    <tbody>
-        <tr *ngFor="let transferencia of historico">
-            <td>{{transferencia.flag}}</td>
-            <td>{{transferencia.dateTransaction | date: 'dd/MM/yyyy'}}</td>
-            <td>{{transferencia.value}}</td>
-            <td>{{transferencia.originDestiny}}</td>
-            <td>{{transferencia.typeTransaction}}</td>
-        </tr>
-    </tbody>
-</table>
+<app-cabecalho></app-cabecalho>
+<br>
+<div class="container">
+    <div class="header">
+      <h1>Seu Extrato</h1>
+    </div>
+  
+    <div class="main-content">
+      <div class="sidebar">
+        <ul>
+          <li routerLink="/tela-principal">Início</li>
+          <li routerLink="/tela-pix">PIX</li>
+          <li routerLink="/tela-ted">TED</li>
+        </ul>
+      </div>
+  
+      <div class="content">
+        <div class="extrato-section">
+          <h2>Extrato de Atividades</h2>
+          <table class="table table-striped" *ngIf="historico.length >0, else listaExtratoVazia">
             <thead>
                 <tr>
                     <th>Tipo</th>
@@ -50,15 +40,19 @@
                 <tr *ngFor="let transferencia of historico">
                     <td>{{transferencia.flag}}</td>
                     <td>{{transferencia.dateTransaction}}</td>
-                    <td>{{transferencia.value}}</td>
+                    <td>{{formatarMoeda()}}</td>
                     <td>{{transferencia.originDestiny}}</td>
                     <td>{{transferencia.typeTransaction}}</td>
                 </tr>
             </tbody>
         </table>
-
+        </div>
+      </div>
+    </div>
+  </div>
 <ng-template #listaExtratoVazia>
     <div class="alert alert-info">
         Não há nenhuma transferêcia 
       </div>
 </ng-template>
+<app-rodape></app-rodape>

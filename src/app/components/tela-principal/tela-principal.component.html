@@ -1,12 +1,32 @@
 <app-cabecalho></app-cabecalho>
-<div class="h1">
-<h1>Bem vindo,{{conta.customerName}}</h1>
-<h2>R$ {{conta.value}}</h2>
-</div>
-<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-    <button routerLink="/pix" type="button" class="btn btn-success">PIX</button>
-    <button routerLink="/ted" type="button" class="btn btn-warning">TED</button>
-</div>
-<app-extrato></app-extrato>
 <br>
-<app-rodape></app-rodape>
+<div class="container">
+    <div class="header">
+      <h1>Olá, {{conta.customerName}}</h1>
+    </div>
+  
+    <div class="main-content">
+      <div class="sidebar">
+        <ul>
+          <li>Início</li>
+          <li routerLink="/tela-extrato">Atividade</li>
+          <li routerLink="/tela-ted">Área TED</li>
+          <li routerLink="/tela-pix">Área Pix</li>
+        </ul>
+      </div>
+  
+      <div class="content">
+        <div class="balance">
+          <h2>Dinheiro disponível</h2>
+          <p>R$ {{formatarMoeda()}}</p>
+        </div>
+  
+        <div class="activity">
+          <h2>Sua atividade</h2>
+          <app-extrato></app-extrato>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-rodape></app-rodape>
+  

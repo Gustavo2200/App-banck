@@ -1,27 +1,26 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">FourBank</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+
+    <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+      <a class="navbar-brand col-lg-3 me-0" href="#">Eco bank</a>
+      <ul class="navbar-nav col-lg-6 justify-content-lg-center">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/tela-principal" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/pix" href="#">PIX</a>
+          <a class="nav-link active" href="#">PIX</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/ted" href="#">TED</a>
+          <a class="nav-link active" aria-disabled="true">TED</a>
         </li>
       </ul>
-      <span class="navbar-text ml-auto" id="data">{{ getCurrentDate() }}</span>
-      <br>
-      <button class="mx-3 navbar-brand" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <img src="../../../assets/img/tela-principal/R.png" alt="sair" width="20" height="25" class="d-inline-block align-text-top">
-        Sair
-      </button>
+      
+      <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+      <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Sair</button>
+      </div>
     </div>
   </div>
 </nav>
