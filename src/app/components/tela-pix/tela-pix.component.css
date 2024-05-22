@@ -1,7 +1,19 @@
+.tela-container{
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid  #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #fcfbfb;
+  }
+  
 .bg-icone{
     padding: 15px;
     background-repeat: no-repeat;
     background-size: 30px;
+}
+.bg-icone-voltar{
+    background-image: url("../../../assets/img/tela-pix/icone_voltar.png");
 }
 .bg-icone-email{
     background-image: url("../../../assets/img/tela-pix/icone_email.png");
@@ -30,28 +42,27 @@
 .item {
     display: flex;
     align-items: center;
-    margin-right: 10px; /* Adiciona espaço entre os ícones e rótulos */
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 0px; /* Adiciona espaço entre os ícones e rótulos */
 }
 
 .item:last-child {
     margin-right: 0; /* Remove a margem direita do último item */
 }
 
-.center-div {
-    display: flex;
-    justify-content: center;
-    margin-left: 28%;
-}
-
-.div-mae > h2,
-.div-mae > .div-center,
-.div-mae > .btn,
-.div-mae > .table {
-    margin-bottom: 20px; /* Adiciona espaçamento vertical entre os elementos */
-}
-
 .item button {
     border: none;
     cursor: pointer;
-    background-color: white;
+    background-color: #fcfbfb;
+}
+
+.center-div{
+    margin: 0 auto;
+}
+
+.botao-invisivel{
+    border: none;
+    cursor: pointer;
+    background-color: #fcfbfb;
 }
