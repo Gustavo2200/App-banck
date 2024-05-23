@@ -45,7 +45,7 @@
   
   .content {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
   }
   
   .extrato-section {
@@ -102,36 +102,13 @@
     border-color: #bce8f1;
     color: #00A784;
   }
-  /* Estilos para a tabela e cabeçalho */
-.scrollable-table {
-  overflow-x: auto;
-}
-
-.table thead th {
-  background-color: #00A784; /* Cor de fundo azul */
-  color: white; /* Cor do texto branca */
-  padding: 10px; /* Espaçamento interno */
-  border-radius: 10px 10px 0 0; /* Bordas arredondadas para o topo */
-  border: none; /* Remover bordas padrão */
-}
-
-.table thead th:first-child {
-  border-top-left-radius: 10px; /* Bordas arredondadas para o primeiro item */
-}
-
-.table thead th:last-child {
-  border-top-right-radius: 10px; /* Bordas arredondadas para o último item */
-}
-
-.table tbody tr:first-child td {
-  border-top: none; /* Remover borda superior da primeira linha */
-}
-
-/* Estilos para a tabela */
-.table {
-  border-collapse: separate; /* Manter as bordas separadas */
-  border-spacing: 0 5px; /* Espaçamento entre as linhas */
-}
-
-
+  
+  /* Novos estilos para tipo de transferência */
+  .entrada {
+    color: green;
+  }
+  
+  .saida {
+    color: red;
+  }
   

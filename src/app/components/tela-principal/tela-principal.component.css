@@ -1,11 +1,82 @@
-.btn-group{
+.container {
     display: flex;
-    align-items: center;
-    padding-left: 150px ;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    background-color: #00A784;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+  }
+  
+  .sidebar {
+    width: 20%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-right: 1px solid #dee2e6;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  
+  .content {
     width: 80%;
-    margin: 40px;
+    padding: 20px;
+  }
+  
+  .balance {
+    background-color: #e9ecef;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .activity {
+    background-color: #e9ecef;
+    padding: 20px;
+  }
+  
+  button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: #00A784;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #00A784;
+  }
+
+  /* Estilos para o painel de saudação */
+.header-panel {
+  background-color: #00A784; /* Cor de fundo azul */
+  color: white; /* Cor do texto branca */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  text-align: center; /* Alinhamento do texto ao centro */
+  margin-bottom: 20px; /* Espaçamento inferior */
 }
-.h1{
-    width: 80%;
-    padding-left: 20px;
+
+.header-panel h1 {
+  margin: 0; /* Remover margens */
+  font-size: 1.8em; /* Tamanho da fonte */
 }
+
+  

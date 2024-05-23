@@ -21,4 +21,10 @@ ngOnInit(): void {
     this.conta = getConta;
   })
 }
+getCurrentDate(): string {
+  return new Date().toLocaleDateString();
+}
+formatarMoeda(): string{
+  return this.conta.value.toFixed(2).replace('.',',');
+}
 }
