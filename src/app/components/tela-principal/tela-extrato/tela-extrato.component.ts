@@ -17,7 +17,7 @@ export class TelaExtratoComponent {
       this.historico = listaDeTransferencias;
     });
   }
-  formatarMoeda(): string{
-    return this.historico[0].value.toFixed(2).replace('.',',');
+  formatarMoeda(valor:number): string{
+    return valor.toFixed(2).replace('.',',');
   }
 }

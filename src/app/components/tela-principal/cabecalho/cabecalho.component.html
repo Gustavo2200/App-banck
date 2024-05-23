@@ -1,28 +1,27 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+<nav class="navbar navbar-expand-lg custom-navbar rounded" aria-label="Thirteenth navbar example">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-      <a class="navbar-brand col-lg-3 me-0" href="#">Eco bank</a>
+      <a class="navbar-brand col-lg-3 me-0" href="#">Eco Bank</a>
       <ul class="navbar-nav col-lg-6 justify-content-lg-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/tela-principal">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">PIX</a>
+          <a class="nav-link" href="#" routerLink="/pix">PIX</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-disabled="true">TED</a>
+          <a class="nav-link" href="#" routerLink="/ted">TED</a>
         </li>
       </ul>
       
       <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-      <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Sair</button>
+        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Sair</button>
       </div>
     </div>
   </div>
 </nav>
 <app-modal-sair-conta></app-modal-sair-conta>
-

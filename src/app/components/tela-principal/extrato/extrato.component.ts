@@ -17,5 +17,8 @@ export class ExtratoComponent {
       this.historico = listaDeTransferencias;
     });
   }
+  formatarMoeda(valor:number): string{
+    return valor.toFixed(2).replace('.',',');
+  }
 
 }
