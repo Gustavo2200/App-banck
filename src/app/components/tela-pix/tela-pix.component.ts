@@ -31,11 +31,10 @@ export class TelaPixComponent {
   }
   voltar(){
     this.router.navigate(['/tela-principal'])
-  
+  }
 
-  let token: string = localStorage.getItem('jwtToken') || ''
-
-  console.log(token)
+  formatarCpf(pixKey: string): string{
+    return pixKey.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4");
   }
 
 }

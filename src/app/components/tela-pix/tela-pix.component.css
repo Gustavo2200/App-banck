@@ -66,3 +66,24 @@
     cursor: pointer;
     background-color: #fcfbfb;
 }
+
+.espacamento{
+    margin-left: 20%;
+}
+
+.cabecalho-table{
+    max-width: 50px;
+}
+.table-body-scroll {
+    max-height: 120px; 
+    overflow-y: auto; 
+    overflow-x: hidden; /* Impede a rolagem horizontal */
+  }
+
+  
+  /* Define a largura das colunas */
+  .table thead th:nth-child(1),
+  .table tbody td:nth-child(1) {
+    width: 20%; /* Ajuste conforme necessário */
+  }
+  
