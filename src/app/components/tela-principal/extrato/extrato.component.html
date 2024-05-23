@@ -1,40 +1,40 @@
 <div class="content">
-    <div class="extrato-section">
-      <div class="scrollable-table">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Tipo</th>
-              <th>Data</th>
-              <th>Valor(R$)</th>
-              <th>Recebedor/Pagador</th>
-              <th>Forma de Pagamento</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr>
-                <td>Saida</td>
-                <td>01/01/2022</td>
-                <td>100</td>
-                <td>Lucas</td>
-                <td>PIX</td>
-              </tr>
-
-            <!-- Conteúdo da tabela gerado dinamicamente -->
-            <tr *ngFor="let transferencia of historico" [ngClass]="{'entrada': !transferencia.flag, 'saida': transferencia.flag}">
-              <td>{{ transferencia.flag ? 'Saída' : 'Entrada' }}</td>
-              <td>{{transferencia.dateTransaction}}</td>
-              <td>{{formatarMoeda(transferencia.value)}}</td>
-              <td>{{transferencia.originDestiny}}</td>
-              <td>{{transferencia.typeTransaction}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="extrato-section">
+    <div class="scrollable-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Valor(R$)</th>
+            <th>Recebedor/Pagador</th>
+            <th>Forma de Pagamento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Saida</td>
+            <td>01/01/2022</td>
+            <td>100</td>
+            <td>Lucas</td>
+            <td>PIX</td>
+          </tr>
+          <!-- Conteúdo da tabela gerado dinamicamente -->
+          <tr *ngFor="let transferencia of historico">
+            <td>{{ transferencia.flag }}</td>
+            <td>{{transferencia.dateTransaction}}</td>
+            <td>{{formatarMoeda(transferencia.value)}}</td>
+            <td>{{transferencia.originDestiny}}</td>
+            <td>{{transferencia.typeTransaction}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
+
 <ng-template #listaExtratoVazia>
-<div class="alert alert-info">
+  <div class="alert alert-info">
     Não há nenhuma transferência 
   </div>
 </ng-template>

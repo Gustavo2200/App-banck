@@ -6,7 +6,7 @@
   }
   
   .header {
-    background-color: #007bff;
+    background-color: #00A784;
     color: white;
     padding: 20px;
     text-align: center;
@@ -45,7 +45,7 @@
   
   .content {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
   }
   
   .extrato-section {
@@ -63,7 +63,7 @@
   .scrollable-table thead th {
     position: sticky;
     top: 0;
-    background-color: #007bff;
+    background-color: #00A784;
     color: white;
     z-index: 1;
   }
@@ -93,22 +93,29 @@
     padding: 15px;
     border-radius: 5px;
     background-color: #d9edf7;
-    color: #31708f;
+    color: #00A784;
     border: 1px solid #bce8f1;
   }
   
   .alert-info {
     background-color: #d9edf7;
     border-color: #bce8f1;
-    color: #31708f;
+    color: #00A784;
   }
   
-  /* Novos estilos para tipo de transferência */
-  .entrada {
-    color: green;
-  }
-  
-  .saida {
-    color: red;
-  }
+/* Estilos para linhas de entrada e saída */
+.entrada {
+  color: green;
+}
+
+.saida {
+  color: red;
+}
+
+/* Opcional: adicionar estilos adicionais para uma aparência mais refinada */
+.entrada td, .saida td {
+  padding: 10px;
+  text-align: left;
+}
+
   
