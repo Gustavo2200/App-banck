@@ -1,3 +1,8 @@
+.botao{
+    background-color: #00a784;
+    color: white;
+}
+
 .tela-container{
     max-width: 500px;
     margin: 0 auto;

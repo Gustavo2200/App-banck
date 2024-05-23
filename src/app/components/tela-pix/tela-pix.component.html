@@ -31,22 +31,26 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Registar chave</button>
+    <button type="button" class="btn botao" data-bs-toggle="modal" data-bs-target="#exampleModal">Registar chave</button>
     <hr/>
-    <table class="table table-striped"*ngIf="chavesPix.length > 0, else semChaves">
+    <table class="table table-striped" *ngIf="chavesPix.length > 0; else semChaves">
         <thead>
-            <tr>
-                <th>Tipo</th>
-                <th>Chave</th>
-            </tr>
+          <tr>
+            <th>Tipo</th>
+            <th>Chave</th>
+          </tr>
         </thead>
-        <tbody *ngFor="let chave of chavesPix" >
-            <tr >
-                <td>{{chave.typePixKey}}</td>
-                <td>{{chave.pixKey}}</td>
+      </table>
+      <div class="table-body-scroll">
+        <table class="table table-striped">
+          <tbody *ngFor="let chave of chavesPix">
+            <tr>
+              <td>{{chave.typePixKey}}</td>
+              <td>{{chave.pixKey}}</td>
             </tr>
-        </tbody>
-    </table>
+          </tbody>
+        </table>
+      </div>
 
     <ng-template #semChaves>
         <div class="alert alert-warning" role="alert">
