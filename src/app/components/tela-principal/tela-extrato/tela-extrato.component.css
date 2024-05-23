@@ -5,13 +5,6 @@
     font-family: Arial, sans-serif;
   }
   
-  .header {
-    background-color: #00A784;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
   .header h2 {
     margin-top: 10px;
   }
@@ -103,12 +96,13 @@
     color: #00A784;
   }
   
-  /* Novos estilos para tipo de transferência */
-  .entrada {
-    color: green;
-  }
-  
-  .saida {
-    color: red;
+  .header {
+    background-color: #00A784; /* Cor de fundo azul */
+    color: white; /* Cor do texto branca */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center; /* Alinhamento do texto ao centro */
+    margin-bottom: 20px; /* Espaçamento inferior */
   }
   

@@ -1,17 +1,13 @@
 <app-cabecalho></app-cabecalho>
 <br>
 <div class="container">
-  <div class="header-panel">
-    <h1>Olá, {{conta.customerName}}</h1>
-  </div>
-
   <div class="main-content">
     <div class="sidebar">
       <ul>
         <li>Início</li>
-        <li routerLink="/tela-extrato">Atividade</li>
-        <li routerLink="/ted">Área Ted</li>
-        <li routerLink="/pix">Área Pix</li>
+        <li (click)="mostrarComponente('extrato')">Atividade</li>
+        <li (click)="mostrarComponente('ted')">Área Ted</li>
+        <li (click)="mostrarComponente('pix')">Área Pix</li>
       </ul>
     </div>
 
@@ -22,8 +18,18 @@
       </div>
 
       <div class="activity">
-        <h2>Sua atividade</h2>
-        <app-extrato></app-extrato>
+        <h2 *ngIf="componenteAtual === 'extrato'">Sua atividade</h2>
+        <h2 *ngIf="componenteAtual === 'pix'">Área PIX</h2>
+        <h2 *ngIf="componenteAtual === 'ted'">Área Ted</h2>
+        <ng-container *ngIf="componenteAtual === 'extrato'">
+          <app-extrato></app-extrato>
+        </ng-container>
+        <ng-container *ngIf="componenteAtual === 'ted'">
+          <app-tela-ted></app-tela-ted>
+        </ng-container>
+        <ng-container *ngIf="componenteAtual === 'pix'">
+          <app-tela-pix></app-tela-pix>
+        </ng-container>
       </div>
     </div>
   </div>
