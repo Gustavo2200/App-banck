@@ -102,20 +102,36 @@
     border-color: #bce8f1;
     color: #00A784;
   }
-  
-/* Estilos para linhas de entrada e saída */
-.entrada {
-  color: green;
+  /* Estilos para a tabela e cabeçalho */
+.scrollable-table {
+  overflow-x: auto;
 }
 
-.saida {
-  color: red;
+.table thead th {
+  background-color: #00A784; /* Cor de fundo azul */
+  color: white; /* Cor do texto branca */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 10px 10px 0 0; /* Bordas arredondadas para o topo */
+  border: none; /* Remover bordas padrão */
 }
 
-/* Opcional: adicionar estilos adicionais para uma aparência mais refinada */
-.entrada td, .saida td {
-  padding: 10px;
-  text-align: left;
+.table thead th:first-child {
+  border-top-left-radius: 10px; /* Bordas arredondadas para o primeiro item */
 }
+
+.table thead th:last-child {
+  border-top-right-radius: 10px; /* Bordas arredondadas para o último item */
+}
+
+.table tbody tr:first-child td {
+  border-top: none; /* Remover borda superior da primeira linha */
+}
+
+/* Estilos para a tabela */
+.table {
+  border-collapse: separate; /* Manter as bordas separadas */
+  border-spacing: 0 5px; /* Espaçamento entre as linhas */
+}
+
 
   
