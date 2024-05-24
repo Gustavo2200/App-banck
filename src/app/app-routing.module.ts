@@ -10,10 +10,6 @@ import { TelaDigiteValorComponent } from './components/tela-digite-valor/tela-di
 
 const routes: Routes = [
   {
-    path: "pix",
-    component: TelaPixComponent
-  },
-  {
     path: "confirmar-transferencia",
     component: TelaDigiteValorComponent
   },
@@ -28,10 +24,6 @@ const routes: Routes = [
   {
     path: "tela-principal",
     component: TelaPrincipalComponent
-  },
-  {
-    path: "ted",
-    component: TelaTedComponent
   },
   {
     path: "",

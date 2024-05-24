@@ -10,7 +10,7 @@ import { TransferenciaService } from '../../../service/transferencia.service';
 export class ExtratoComponent {
   historico : Transferencia[]=[];
 
-  constructor(private transferenciaService: TransferenciaService) { }
+  constructor(private transferenciaService: TransferenciaService) {}
 
   ngOnInit(): void {
     this.transferenciaService.listar().subscribe((listaDeTransferencias) => {
@@ -21,4 +21,7 @@ export class ExtratoComponent {
     return valor.toFixed(2).replace('.',',');
   }
 
+  formatarData(data: string): Date{
+    return new Date(data);
+  }
 }

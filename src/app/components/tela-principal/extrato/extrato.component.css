@@ -4,6 +4,14 @@
     flex-direction: column;
     font-family: Arial, sans-serif;
   }
+
+  .text-verde {
+    color: green;
+  }
+  
+  .text-vermelho {
+    color: red;
+  }
   
   .header {
     background-color: #00A784;
