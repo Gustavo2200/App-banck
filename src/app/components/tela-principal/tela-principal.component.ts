@@ -15,10 +15,34 @@ export class TelaPrincipalComponent {
     value: 0.0
   };
 
+  mostrarSaldo: boolean = true;
+  componenteAtual: string = 'extrato'
+
   constructor(private contaService: ContaService){}
 ngOnInit(): void {
   this.contaService.accountInfo().subscribe((getConta)=>{
     this.conta = getConta;
   })
 }
+getCurrentDate(): string {
+  return new Date().toLocaleDateString();
+}
+formatarMoeda(): string{
+  return this.conta.value.toFixed(2).replace('.',',');
+}
+  mostrarComponente(componente: string) {
+    this.componenteAtual = componente;
+}
+alternarVisibilidadeSaldo() {
+  this.mostrarSaldo = !this.mostrarSaldo;
+}
+
+obterSaldoFormatado(): string {
+  if (this.mostrarSaldo) {
+    return "R$ "+ this.formatarMoeda();
+  } else {
+    return '••••'
+  }
+}
+
 }

@@ -1,25 +1,49 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
 .login-container {
-    max-width: 400px;
+    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
-    padding: 30px;
-    margin-top: 50px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 40px;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+    background: white;
 }
+
+.botao-entrar .btn {
+    background-color: #00A784; /* Cor de fundo desejada */
+    border: none; /* Remove a borda se necessário */
+    border-radius: 30px; /* Bordas arredondadas */
+    height: 50px;
+}
+
 .botao-entrar {
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 50px;
     width: 100%;
-    cursor: pointer;
 }
-.botao-cadastrar {
-    display: flex;
-    
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-group input {
+    height: 45px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-group label {
+    font-weight: bold;
 }

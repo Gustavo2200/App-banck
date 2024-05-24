@@ -1,52 +1,54 @@
 
-<div class="p-4 div-mae tela-container">
-    <button class="botao-invisivel"><div class="mx-2 bg-icone bg-icone-voltar" (click)="voltar()"></div></button>
-    <h2 class="text-center" *ngIf="conta">R$ {{conta.value}}</h2>
-    <h2 class="text-center" *ngIf="!conta">Carregando...</h2>
+<div class="p-4 div-mae">
     <div class="center-div">
-        <div class="container center-div">
-            <div class="item">
-                <button class="container" type="button" data-bs-target="#ModalEmail" data-bs-toggle="modal">
+        <div class="container">
+            <div class="item center-div">
+                <button class="container btn botao mx-3" type="button" data-bs-target="#ModalEmail" data-bs-toggle="modal">
                     <div class="mx-2 bg-icone bg-icone-email"></div>
                     Email
                 </button>
             </div>
             <div class="item">
-                <button class="container" type="button" data-bs-target="#ModalCelular" data-bs-toggle="modal">
-                    <div class="mx-2 bg-icone bg-icone-celular"></div>
+                <button class="container btn botao mx-3" type="button" data-bs-target="#ModalCelular" data-bs-toggle="modal">
+                    <div class="mx-2 bg-icone-celular"></div>
                     Celular
                 </button>
             </div>
             <div class="item">
-                <button class="container" type="button"  data-bs-target="#ModalCpf" data-bs-toggle="modal">
+                <button class="container btn botao mx-3" type="button"  data-bs-target="#ModalCpf" data-bs-toggle="modal">
                     <div class="mx-2 bg-icone bg-icone-cpf"></div>
                     CPF
                 </button>
             </div>
             <div class="item">
-                <button class="container" type="button" data-bs-target="#ModalAleatorio" data-bs-toggle="modal">
-                <div class="mx-2 bg-icone bg-icone-aleatorio"></div>
+                <button class="container btn botao mx-3" type="button" data-bs-target="#ModalAleatorio" data-bs-toggle="modal">
+                <div class="mx-2 bg-icone-aleatorio"></div>
                 Aleatorio
                 </button>
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Registar chave</button>
     <hr/>
-    <table class="table table-striped"*ngIf="chavesPix.length > 0, else semChaves">
+    <table class="table table-striped" *ngIf="chavesPix.length > 0; else semChaves">
         <thead>
-            <tr>
-                <th>Tipo</th>
-                <th>Chave</th>
-            </tr>
+          <tr>
+            <th>Tipo</th>
+            <th>Chave</th>
+            <th><button type="button" class="btn botao" data-bs-toggle="modal" data-bs-target="#exampleModal">Registar chave</button></th>
+          </tr>
         </thead>
-        <tbody *ngFor="let chave of chavesPix" >
-            <tr >
-                <td>{{chave.typePixKey}}</td>
-                <td>{{chave.pixKey}}</td>
+      </table>
+      <div class="table-body-scroll">
+        <table class="table table-striped">
+          <tbody *ngFor="let chave of chavesPix">
+            <tr>
+              <td>{{chave.typePixKey}}</td>
+              <td *ngIf="chave.typePixKey !== 'CPF'">{{chave.pixKey}}</td>
+              <td *ngIf="chave.typePixKey === 'CPF'">{{formatarCpf(chave.pixKey)}}</td>
             </tr>
-        </tbody>
-    </table>
+          </tbody>
+        </table>
+      </div>
 
     <ng-template #semChaves>
         <div class="alert alert-warning" role="alert">

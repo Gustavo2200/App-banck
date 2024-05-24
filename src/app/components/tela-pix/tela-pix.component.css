@@ -1,3 +1,9 @@
+.botao{
+    background-color: #00a784;
+    color: white;
+    max-width: 200px;  
+}
+
 .tela-container{
     max-width: 500px;
     margin: 0 auto;
@@ -6,21 +12,20 @@
     padding: 20px;
     background-color: #fcfbfb;
   }
-  
 .bg-icone{
     padding: 15px;
     background-repeat: no-repeat;
     background-size: 30px;
-}
-.bg-icone-voltar{
-    background-image: url("../../../assets/img/tela-pix/icone_voltar.png");
 }
 .bg-icone-email{
     background-image: url("../../../assets/img/tela-pix/icone_email.png");
 }
 
 .bg-icone-celular{
-    background-image: url("../../../assets/img/tela-pix/icone_telefone.png");
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-image: url("../../../assets/img/tela-pix/icone_celular.png");
 }
 
 .bg-icone-cpf{
@@ -28,6 +33,9 @@
 }
 
 .bg-icone-aleatorio{
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: 25px;
     background-image: url("../../../assets/img/tela-pix/icone_aleatorio.png");
 }
 
@@ -51,18 +59,26 @@
     margin-right: 0; /* Remove a margem direita do último item */
 }
 
-.item button {
-    border: none;
-    cursor: pointer;
-    background-color: #fcfbfb;
+.espacamento{
+    margin-left: 20%;
 }
 
-.center-div{
-    margin: 0 auto;
+.cabecalho-table{
+    max-width: 50px;
 }
+.table th:last-child {
+    text-align: right;
+  }
+.table-body-scroll {
+    max-height: 120px; 
+    overflow-y: auto; 
+    overflow-x: hidden; /* Impede a rolagem horizontal */
+  }
 
-.botao-invisivel{
-    border: none;
-    cursor: pointer;
-    background-color: #fcfbfb;
-}
+  
+  /* Define a largura das colunas */
+  .table thead th:nth-child(1),
+  .table tbody td:nth-child(1) {
+    width: 20%; /* Ajuste conforme necessário */
+  }
+  

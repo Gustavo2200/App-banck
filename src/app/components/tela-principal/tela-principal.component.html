@@ -1,12 +1,42 @@
 <app-cabecalho></app-cabecalho>
-<div class="h1">
-<h1>Bem vindo,{{conta.customerName}}</h1>
-<h2>R$ {{conta.value}}</h2>
-</div>
-<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-    <button routerLink="/pix" type="button" class="btn btn-success">PIX</button>
-    <button routerLink="/ted" type="button" class="btn btn-warning">TED</button>
-</div>
-<app-extrato></app-extrato>
 <br>
+<div class="container">
+  <div class="main-content">
+    <div class="sidebar">
+      <ul>
+        <li>Início</li>
+        <li (click)="mostrarComponente('extrato')">Atividade</li>
+        <li (click)="mostrarComponente('ted')">Área Ted</li>
+        <li (click)="mostrarComponente('pix')">Área Pix</li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <div class="balance">
+        <h6>Saldo disponível</h6>
+        <div class="saldo-e-botao">
+          <h4>{{ obterSaldoFormatado() }}</h4>
+          <button class="btn-toggle-saldo" (click)="alternarVisibilidadeSaldo()">
+            <div [ngClass]="mostrarSaldo ? 'bg_icon_close_eye' : 'bg_icon_open_eye'"></div>
+          </button>
+        </div>
+      </div>    
+
+      <div class="activity">
+        <h2 *ngIf="componenteAtual === 'extrato'">Sua atividade</h2>
+        <h2 *ngIf="componenteAtual === 'pix'">Área PIX</h2>
+        <h2 *ngIf="componenteAtual === 'ted'">Área Ted</h2>
+        <ng-container *ngIf="componenteAtual === 'extrato'">
+          <app-extrato></app-extrato>
+        </ng-container>
+        <ng-container *ngIf="componenteAtual === 'ted'">
+          <app-tela-ted></app-tela-ted>
+        </ng-container>
+        <ng-container *ngIf="componenteAtual === 'pix'">
+          <app-tela-pix></app-tela-pix>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
 <app-rodape></app-rodape>

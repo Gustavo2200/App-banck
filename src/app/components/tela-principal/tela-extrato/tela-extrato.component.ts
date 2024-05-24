@@ -3,14 +3,14 @@ import { Transferencia } from '../../../interfaces/request/Transferencia';
 import { TransferenciaService } from '../../../service/transferencia.service';
 
 @Component({
-  selector: 'app-extrato',
-  templateUrl: './extrato.component.html',
-  styleUrl: './extrato.component.css'
+  selector: 'app-tela-extrato',
+  templateUrl: './tela-extrato.component.html',
+  styleUrl: './tela-extrato.component.css'
 })
-export class ExtratoComponent {
+export class TelaExtratoComponent {
   historico : Transferencia[]=[];
 
-  constructor(private transferenciaService: TransferenciaService) {}
+  constructor(private transferenciaService: TransferenciaService) { }
 
   ngOnInit(): void {
     this.transferenciaService.listar().subscribe((listaDeTransferencias) => {
@@ -19,9 +19,5 @@ export class ExtratoComponent {
   }
   formatarMoeda(valor:number): string{
     return valor.toFixed(2).replace('.',',');
-  }
-
-  formatarData(data: string): Date{
-    return new Date(data);
   }
 }

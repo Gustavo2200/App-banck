@@ -1,7 +1,39 @@
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 10;
-    margin: 20px;
-    
-}
+/* Custom styles for footer */
+.custom-footer {
+    background-color: #00A784; /* Same background color as header and navbar */
+    color: white;
+    padding: 20px 0;
+    border-top: 1px solid #00A784; /* Slightly darker blue for the border */
+  }
+  
+  .custom-footer .nav-link {
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+  }
+  
+  .custom-footer .nav-link:hover {
+    color: #0011a7; /* Slightly darker blue on hover */
+  }
+  
+  .custom-footer .text-center {
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .custom-footer .border-bottom {
+    border-color: #00A784 !important; /* Ensure border color matches the design */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .custom-footer .nav {
+      flex-direction: column;
+    }
+  
+    .custom-footer .nav-link {
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+  

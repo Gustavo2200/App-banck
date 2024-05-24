@@ -1,8 +1,43 @@
-.ml-auto {
-    margin-left: auto !important; /* Define a margem esquerda como automática para alinhar o elemento à direita */
-    font-style: normal;
-    font-size: large;
-}
-.nav{
-    margin: 20px;
-}
+.custom-navbar {
+    background-color: #00A784; /* Cor de fundo principal da navbar */
+    color: white; /* Cor do texto */
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white;
+    font-weight: bold;
+    margin: 0 10px;
+  }
+  
+  .navbar-nav .nav-link.active {
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+  }
+  
+  .navbar-text {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+  }
+  
+  .navbar-user {
+    display: flex;
+    flex-direction: column; /* Alinha o texto do cliente verticalmente */
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: #00A784;
+    border: none;
+    margin-left: 10px; /* Espaçamento entre o nome do cliente e o botão "Sair" */
+  }
+  
+  .btn-danger:hover {
+    background-color: #00A784;
+  }
+  
+  
