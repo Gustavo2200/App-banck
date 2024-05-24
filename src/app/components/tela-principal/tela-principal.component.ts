@@ -27,4 +27,8 @@ getCurrentDate(): string {
 formatarMoeda(): string{
   return this.conta.value.toFixed(2).replace('.',',');
 }
+componenteAtual: string = 'extrato'
+  mostrarComponente(componente: string) {
+    this.componenteAtual = componente;
+}
 }

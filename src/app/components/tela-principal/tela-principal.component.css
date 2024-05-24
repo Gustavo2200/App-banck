@@ -64,19 +64,5 @@
   }
 
   /* Estilos para o painel de saudação */
-.header-panel {
-  background-color: #00A784; /* Cor de fundo azul */
-  color: white; /* Cor do texto branca */
-  padding: 20px; /* Espaçamento interno */
-  border-radius: 10px; /* Bordas arredondadas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  text-align: center; /* Alinhamento do texto ao centro */
-  margin-bottom: 20px; /* Espaçamento inferior */
-}
-
-.header-panel h1 {
-  margin: 0; /* Remover margens */
-  font-size: 1.8em; /* Tamanho da fonte */
-}
 
   
