@@ -1,5 +1,5 @@
 export interface Transferencia{
-    flag: boolean,
+    flag: string,
     dateTransaction: Date,
     value: number,
     originDestiny: string,

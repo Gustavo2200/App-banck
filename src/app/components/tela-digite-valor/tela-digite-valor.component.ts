@@ -77,7 +77,7 @@ export class TelaDigiteValorComponent {
         alert(response.message);
       } else{
         alert("Transferecia concluída com sucesso");
-        this.router.navigate(['/pix'])
+        this.router.navigate(['/tela-principal'])
       }
     })
   }

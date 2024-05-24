@@ -12,20 +12,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Saida</td>
-            <td>01/01/2022</td>
-            <td>100</td>
-            <td>Lucas</td>
-            <td>PIX</td>
-          </tr>
           <!-- Conteúdo da tabela gerado dinamicamente -->
           <tr *ngFor="let transferencia of historico">
-            <td>{{ transferencia.flag }}</td>
-            <td>{{transferencia.dateTransaction}}</td>
-            <td>{{formatarMoeda(transferencia.value)}}</td>
-            <td>{{transferencia.originDestiny}}</td>
-            <td>{{transferencia.typeTransaction}}</td>
+            <td [ngClass]="{'text-verde': transferencia.flag === 'Entrada', 'text-vermelho': transferencia.flag === 'Saída'}">{{ transferencia.flag }}</td>
+            <td [ngClass]="{'text-verde': transferencia.flag === 'Entrada', 'text-vermelho': transferencia.flag === 'Saída'}">{{ transferencia.dateTransaction | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            <td [ngClass]="{'text-verde': transferencia.flag === 'Entrada', 'text-vermelho': transferencia.flag === 'Saída'}">{{ formatarMoeda(transferencia.value) }}</td>
+            <td [ngClass]="{'text-verde': transferencia.flag === 'Entrada', 'text-vermelho': transferencia.flag === 'Saída'}">{{ transferencia.originDestiny }}</td>
+            <td [ngClass]="{'text-verde': transferencia.flag === 'Entrada', 'text-vermelho': transferencia.flag === 'Saída'}">{{ transferencia.typeTransaction }}</td>
           </tr>
         </tbody>
       </table>

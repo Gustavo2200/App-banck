@@ -40,10 +40,10 @@ export class ModalDestinatarioPixComponent {
     if (numero.length > 2) {
       numero = '(' + numero.substring(0, 2) + ') ' + numero.substring(2);
     }
-    if (numero.length > 8) {
-      numero = numero.substring(0, 9) + '-' + numero.substring(9);
+    if (numero.length > 9) {
+      numero = numero.substring(0, 10) + '-' + numero.substring(10);
     }
-    if (numero.length > 14) {
+    if (numero.length > 15) {
       numero = numero.substring(0, 14);
     }
 

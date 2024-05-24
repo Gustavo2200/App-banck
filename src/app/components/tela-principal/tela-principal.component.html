@@ -13,9 +13,14 @@
 
     <div class="content">
       <div class="balance">
-        <h2>Dinheiro disponível</h2>
-        <p>R$ {{formatarMoeda()}}</p>
-      </div>
+        <h6>Saldo disponível</h6>
+        <div class="saldo-e-botao">
+          <h4>{{ obterSaldoFormatado() }}</h4>
+          <button class="btn-toggle-saldo" (click)="alternarVisibilidadeSaldo()">
+            <div [ngClass]="mostrarSaldo ? 'bg_icon_close_eye' : 'bg_icon_open_eye'"></div>
+          </button>
+        </div>
+      </div>    
 
       <div class="activity">
         <h2 *ngIf="componenteAtual === 'extrato'">Sua atividade</h2>

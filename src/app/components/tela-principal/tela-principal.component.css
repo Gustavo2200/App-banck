@@ -3,6 +3,41 @@
     flex-direction: column;
     font-family: Arial, sans-serif;
   }
+  .saldo-e-botao {
+    position: relative; /* Necessário para o posicionamento absoluto do botão */
+    display: flex;
+    align-items: center;
+    padding-right: 30px; /* Espaço para o ícone, ajuste conforme necessário */
+  }
+  
+  .saldo-e-botao h4 {
+    margin: 0;
+    flex-grow: 1; /* Ocupa o espaço restante */
+  }
+  
+
+  button.btn-toggle-saldo {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  
+  button.btn-toggle-saldo div {
+    width: 24px; /* Ajuste o tamanho conforme necessário */
+    height: 24px; /* Ajuste o tamanho conforme necessário */
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .bg_icon_open_eye{
+    background-image: url(../../../assets/img/tela-principal/icone_olho_aberto.png)
+  }
+
+  .bg_icon_close_eye{
+    background-image: url(../../../assets/img/tela-principal/icone_olho_fechado.png)
+  }
   
   .header {
     background-color: #00A784;
