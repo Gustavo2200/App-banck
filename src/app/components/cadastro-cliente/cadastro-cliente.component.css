@@ -1,4 +1,4 @@
-.form-group{
+/* .form-group{
   margin-bottom: 20px;
 }
 
@@ -9,4 +9,74 @@
   border-radius: 15px;
   padding: 20px;
   background-color: #fcfbfb;
+} */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.cadastro-container {
+  width: 100%;
+  padding: 40px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.botao-cadastrar .btn, .botao-acessar .btn {
+  background-color: #00A784;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  width: 305px;
+
+}
+
+.botao-cadastrar, .botao-acessar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%; /* Ajustar a largura para 100% dentro das colunas do Bootstrap */
+  height: 45px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-check {
+  margin-left: 10px;
+}
+
+.row{
+  margin-top: 0px;
+}
+
+.horizontal{
+  display: flex;
+  justify-content: space-between;
 }

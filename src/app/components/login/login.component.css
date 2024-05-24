@@ -1,29 +1,3 @@
-  /* .login-container { 
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 30px;
-    margin-top: 50px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
-}
-.botao-entrar {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 50px;
-    width: 100%;
-    cursor: pointer;
-}
-.botao-entrar .btn {
-    background-color: #00A784;
-    border: none;
-}  */
-
 body, html {
     height: 100%;
     margin: 0;

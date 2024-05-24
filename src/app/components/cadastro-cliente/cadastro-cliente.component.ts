@@ -1,21 +1,23 @@
-import { Component, booleanAttribute } from '@angular/core';
+
+
+import { Component } from '@angular/core';
 import { NovoCliente } from '../../interfaces/request/NovoCliente';
 import { ClienteService } from '../../service/cliente.service';
-import { catchError, switchMap } from 'rxjs';
-import { ErroResponse } from '../../interfaces/response/ErroResponse';
 import { LoginService } from '../../service/login.service';
 import { LoginDados } from '../../interfaces/request/LoginDados';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { switchMap } from 'rxjs';
+import { ErroResponse } from '../../interfaces/response/ErroResponse';
 
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.component.html',
-  styleUrl: './cadastro-cliente.component.css'
+  styleUrls: ['./cadastro-cliente.component.css']
 })
 export class CadastroClienteComponent {
 
-  constructor(private clienteService: ClienteService, 
-    private loginService: LoginService, private router: Router) { }
+  constructor(private clienteService: ClienteService, private loginService: LoginService, private router: Router) { }
 
   novoCliente: NovoCliente = {
     name: '',
@@ -26,26 +28,53 @@ export class CadastroClienteComponent {
     dateBirth: new Date()
   }
 
-  erros: ErroResponse[] = [];
+  mensagensErroBackend: string[] = [];
 
-  camposNulos: String[] = [];
+  erros: any = {};
 
   cadastrar() {
     this.validarCampos();
-    if (this.camposNulos.length === 0) {
+    if (Object.keys(this.erros).length === 0) {
       this.clienteService.cadastrarCliente(this.novoCliente)
         .subscribe(
           () => {
             this.novaConta();
             this.router.navigate(['/login']);
           },
-          (error: ErroResponse[]) => {
-            alert(error.map(error => error.message).join('\n'));
-            this.erros = error;
+          (error: HttpErrorResponse[]) => {
+            if (Array.isArray(error)) {
+              this.mensagensErroBackend = []; // Limpa as mensagens anteriores
+              error.forEach((err: any) => {
+                this.mensagensErroBackend.push(err.message);
+              });
+              this.mensagensErroBackend.forEach((err: String) => {
+                if(err.includes('Cpf')) {
+                  this.erros.cpf = 'Digite um CPF válido';
+                }
+
+                if(err.includes('CPF')) {
+                  this.erros.cpf = 'Cpf já registrado';
+                }
+
+                if(err.includes('email')) {
+                  this.erros.email = 'Digite um e-mail válido';
+                }
+
+                if(err.includes('Email')) {
+                  this.erros.email = 'Email já registrado';
+                }
+
+                if(err.includes('Telefone')) {
+                  this.erros.phone = 'Telefone já registrado';
+                }
+                
+
+              })
+            } else {
+              this.mensagensErroBackend.push('Ocorreu um erro. Por favor, tente novamente mais tarde.');
+            }
           }
         );
-    } else {
-      alert(this.camposNulos.join('\n'));
     }
   }
 
@@ -69,30 +98,29 @@ export class CadastroClienteComponent {
   }
 
   validarCampos() {
-    this.camposNulos = [];
-    if (this.novoCliente.name == '') {
-      this.camposNulos.push('Nome obrigatório');
+    this.erros = {};
+    if (!this.novoCliente.name) {
+      this.erros.name = 'Por favor, digite seu nome completo';
     }
 
-    if (this.novoCliente.email == '') {
-      this.camposNulos.push('Email obrigatório');
+    if (!this.novoCliente.email) {
+      this.erros.email = 'Digite um e-mail válido';
     }
 
-    if (this.novoCliente.phone == '') {
-      this.camposNulos.push('Telefone obrigatório');
+    if (!this.novoCliente.phone) {
+      this.erros.phone = 'Digite um telefone válido';
     }
 
-    if (this.novoCliente.password == '') {
-      this.camposNulos.push('Senha obrigatório');
+    if (!this.novoCliente.password) {
+      this.erros.password = 'Digite uma senha válida';
     }
 
-    if (this.novoCliente.cpf == '') {
-      this.camposNulos.push('CPF obrigatório');
+    if (!this.novoCliente.cpf) {
+      this.erros.cpf = 'Digite um CPF válido';
     }
 
-    
     if (this.calcularIdade(this.novoCliente.dateBirth.toString()) < 18) {
-      this.camposNulos.push('Você deve ter mais de 18 anos');
+      this.erros.dateBirth = 'Você deve ter mais de 18 anos';
     }
   }
 
@@ -103,11 +131,11 @@ export class CadastroClienteComponent {
     if (numero.length > 2) {
       numero = '(' + numero.substring(0, 2) + ') ' + numero.substring(2);
     }
-    if (numero.length > 8) {
-      numero = numero.substring(0, 9) + '-' + numero.substring(9);
+    if (numero.length > 9) {
+      numero = numero.substring(0, 10) + '-' + numero.substring(10);
     }
-    if (numero.length > 14) {
-      numero = numero.substring(0, 14);
+    if (numero.length > 15) {
+      numero = numero.substring(0, 15);
     }
  
     input.value = numero;
