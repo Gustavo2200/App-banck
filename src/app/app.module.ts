@@ -12,12 +12,13 @@ import { TelaPrincipalComponent } from './components/tela-principal/tela-princip
 import { ExtratoComponent } from './components/tela-principal/extrato/extrato.component';
 import { CadastroClienteComponent } from './components/cadastro-cliente/cadastro-cliente.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CabecalhoComponent } from './components/tela-principal/cabecalho/cabecalho.component';
 import { RodapeComponent } from './components/tela-principal/rodape/rodape.component';
 import { ModalSairContaComponent } from './components/tela-principal/cabecalho/modal-sair-conta/modal-sair-conta.component';
 import { CommonModule } from '@angular/common';
 import { TelaDigiteValorComponent } from './components/tela-digite-valor/tela-digite-valor.component';
+import { Interceptor } from './config/Interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,9 @@ import { TelaDigiteValorComponent } from './components/tela-digite-valor/tela-di
     HttpClientModule,
     CommonModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Conta } from '../../interfaces/request/Conta';
 import { ContaService } from '../../service/conta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-principal',
@@ -18,8 +19,11 @@ export class TelaPrincipalComponent {
   mostrarSaldo: boolean = true;
   componenteAtual: string = 'extrato'
 
-  constructor(private contaService: ContaService){}
+  constructor(private contaService: ContaService, private router: Router){}
 ngOnInit(): void {
+  if(localStorage.getItem('jwtToken') == null){
+    this.router.navigate(['/login']);
+  }
   this.contaService.accountInfo().subscribe((getConta)=>{
     this.conta = getConta;
   })

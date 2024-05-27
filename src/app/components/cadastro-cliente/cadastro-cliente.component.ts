@@ -39,6 +39,7 @@ export class CadastroClienteComponent {
         .subscribe(
           () => {
             this.novaConta();
+            alert('Conta criada com sucesso!');
             this.router.navigate(['/login']);
           },
           (error: HttpErrorResponse[]) => {
