@@ -31,6 +31,9 @@ export class TelaDigiteValorComponent {
 
 
   ngOnInit(): void {
+    if(localStorage.getItem('jwtToken') == null){
+      this.router.navigate(['/login']);
+    }
     // Remove o fundo escuro do modal anterior
     const backGroundEscuro = document.querySelector('.modal-backdrop');
     if (backGroundEscuro != null) {
