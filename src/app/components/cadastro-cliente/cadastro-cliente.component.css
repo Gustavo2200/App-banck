@@ -20,7 +20,7 @@ body, html {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .cadastro-container {
@@ -30,6 +30,20 @@ body, html {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background: white;
+  max-width: 600px; /* Define uma largura máxima */
+  margin: 0 auto; /* Centraliza a div horizontalmente */
+}
+
+@media (max-width: 768px) {
+  .cadastro-container {
+    padding: 20px; /* Reduz o padding em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .cadastro-container {
+    padding: 10px; /* Reduz ainda mais o padding em telas muito pequenas */
+  }
 }
 
 .botao-cadastrar .btn, .botao-acessar .btn {
@@ -37,8 +51,7 @@ body, html {
   border: none;
   border-radius: 30px;
   height: 50px;
-  width: 305px;
-
+  width: 100%;
 }
 
 .botao-cadastrar, .botao-acessar {
@@ -60,7 +73,7 @@ img {
 }
 
 .form-group input {
-  width: 100%; /* Ajustar a largura para 100% dentro das colunas do Bootstrap */
+  width: 100%;
   height: 45px;
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -68,15 +81,16 @@ img {
   font-size: 16px;
 }
 
-.form-check {
-  margin-left: 10px;
-}
+@media (max-width: 768px) {
+  .cadastro-container {
+    padding: 20px;
+  }
 
-.row{
-  margin-top: 0px;
-}
+  .form-group {
+    margin-bottom: 15px;
+  }
 
-.horizontal{
-  display: flex;
-  justify-content: space-between;
+  .botao-cadastrar .btn, .botao-acessar .btn {
+    height: 45px;
+  }
 }

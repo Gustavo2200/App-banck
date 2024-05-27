@@ -13,13 +13,24 @@
         .text-danger {
             font-size: 0.875em; /* Tamanho da fonte das mensagens de erro */
         }
+        .botao-cadastrar .btn, .botao-acessar .btn {
+            background-color: #00A784;
+            border: none;
+            border-radius: 30px;
+            height: 50px;
+            width: 100%;
+        }
+        .botao-cadastrar, .botao-acessar {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
   <!-- Cadastro form -->
-<div class="container-xl">
+  <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
-      <div class="col-md-8 cadastro-container">
+      <div class="col-lg-8 col-md-10 col-sm-12 cadastro-container">
         <div class="text-center mb-4 img-container">
           <img src="https://i.ibb.co/dLLsj6s/Logo-Eco-Bank.jpg" alt="Logo-Eco-Bank">
         </div>
@@ -66,11 +77,11 @@
               <div *ngIf="erros.dateBirth" class="text-danger">{{ erros.dateBirth }}</div>
             </div>
           </div>
-          <div class="d-flex justify-content-between">
-            <div class="botao-acessar">
-                <button type="submit" class="btn btn-primary" routerLink="/login">Acessar conta</button>
-              </div>
-            <div class="botao-cadastrar">
+          <div class="row">
+            <div class="col-md-6 botao-acessar">
+              <button type="button" class="btn btn-primary" routerLink="/login">Acessar conta</button>
+            </div>
+            <div class="col-md-6 botao-cadastrar">
               <button type="submit" class="btn btn-primary">Cadastrar</button>
             </div>
           </div>
