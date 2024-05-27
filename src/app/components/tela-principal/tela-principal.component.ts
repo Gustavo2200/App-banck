@@ -18,7 +18,7 @@ export class TelaPrincipalComponent {
     value: 0.0
   };
 
-  mostrarSaldo: boolean = true;
+  mostrarSaldo: boolean = false;
   componenteAtual: string = 'extrato'
 
 
