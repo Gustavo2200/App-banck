@@ -8,13 +8,13 @@
       <a class="navbar-brand col-lg-3 me-0" href="#">Eco Bank</a>
       <ul class="navbar-nav col-lg-6 justify-content-lg-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" routerLink="/tela-principal">Início</a>
+          <a class="nav-link active" aria-current="page" (click)="selecionarComponente('extrato')">Atividade</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/pix">PIX</a>
+          <a class="nav-link" (click)="selecionarComponente('pix')">PIX</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/ted">TED</a>
+          <a class="nav-link" (click)="selecionarComponente('ted')">TED</a>
         </li>
       </ul>
       

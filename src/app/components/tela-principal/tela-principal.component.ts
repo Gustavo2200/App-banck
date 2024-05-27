@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Conta } from '../../interfaces/request/Conta';
 import { ContaService } from '../../service/conta.service';
+import { ComponenteSelecionadoService } from '../../service/componente-selecionado.service';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,18 +21,30 @@ export class TelaPrincipalComponent {
   mostrarSaldo: boolean = true;
   componenteAtual: string = 'extrato'
 
-  constructor(private contaService: ContaService, private router: Router){}
+
+  constructor(
+    private contaService: ContaService, 
+    private componenteService: ComponenteSelecionadoService,
+    private route: ActivatedRoute,
+    private router: Router
+  ){}
+
 ngOnInit(): void {
   if(localStorage.getItem('jwtToken') == null){
     this.router.navigate(['/login']);
   }
+    this.componenteService.componenteAtual$.subscribe(componente => {
+    this.componenteAtual = componente; 
+  });
   this.contaService.accountInfo().subscribe((getConta)=>{
     this.conta = getConta;
   })
 }
+  
 getCurrentDate(): string {
   return new Date().toLocaleDateString();
 }
+  
 formatarMoeda(): string{
   return this.conta.value.toFixed(2).replace('.',',');
 }
