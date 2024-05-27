@@ -1,6 +1,6 @@
 [build]
   publish = "dist/app-banck"
-  command = "npm install --legacy-peer-deps && ng build --configuration production"
+  command = "npm install --legacy-peer-deps && npm run build"
 
 [build.environment]
   NODE_VERSION = "18.20.3"

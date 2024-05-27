@@ -21,15 +21,13 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/app-banck",
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -71,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "AppBanck:build:production"
+              "browserTarget": "AppBanck:build:production"
             },
             "development": {
-              "buildTarget": "AppBanck:build:development"
+              "browserTarget": "AppBanck:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,17 +80,16 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "AppBanck:build"
+            "browserTarget": "AppBanck:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -108,8 +105,5 @@
   },
   "cli": {
     "analytics": "9d8f717d-5020-4e48-9b98-2dd4c44221b9"
-    "analytics": "6b2836ec-de3f-4fb0-9756-8852c6ae9f8d"
-    "analytics": "4d097127-46db-433c-b0fe-84e71c597b1d"
-    "analytics": "163b46cf-ba3d-4422-a0b5-4c07d50ba5f2"
   }
 }
