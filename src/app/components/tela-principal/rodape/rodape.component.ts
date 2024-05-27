@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComponenteSelecionadoService } from '../../../service/componente-selecionado.service';
 
 @Component({
   selector: 'app-rodape',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class RodapeComponent {
 
+  constructor(private componenteService: ComponenteSelecionadoService){}
+
+  
+  selecionarComponente(componente: string) {
+    this.componenteService.mudarComponente(componente);
+  }
 }

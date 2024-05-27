@@ -83,7 +83,7 @@ export class TelaDigiteValorComponent {
   }
 
   cancelarTransferencia(){
-    this.router.navigate(['/pix'])
+    this.router.navigate(['/tela-principal'])
   }
   mascaraValor(event: any) {
     let input = event.target as HTMLInputElement;
