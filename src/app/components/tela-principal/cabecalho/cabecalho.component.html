@@ -11,16 +11,17 @@
           <a class="nav-link active" aria-current="page" (click)="selecionarComponente('extrato')">Atividade</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="selecionarComponente('pix')">PIX</a>
+          <a class="nav-link" (click)="selecionarComponente('pix')">Pix</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="selecionarComponente('ted')">TED</a>
+          <a class="nav-link" (click)="selecionarComponente('ted')">Ted</a>
         </li>
       </ul>
       
       <div class="d-lg-flex col-lg-3 justify-content-lg-end align-items-center">
         <div class="navbar-user me-3">
             <a id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">Olá, {{conta.customerName}}</a>
+            <a id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">AG: {{conta.accountAgency}} - CC: {{conta.accountNumber}}</a>
         </div>
         <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showLoading()">Sair</button>
       </div>

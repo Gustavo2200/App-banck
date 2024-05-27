@@ -37,3 +37,6 @@
     }
   }
   
+  .nav-item{
+    cursor: pointer;
+  }
