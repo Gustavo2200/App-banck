@@ -32,20 +32,7 @@ export class TelaTedComponent {
       this.infoTedService.transferir(this.infoTed, token).subscribe(
         (data: TedResponse) => {
           this.tedResponse = data;
-          alert(
-            'Transferência efetuada com sucesso!\n' +
-              'Conta destino: ' +
-              this.tedResponse.customerNameDestiny +
-              '\n' +
-              'Conta origem: ' +
-              this.tedResponse.customerNameOrigin +
-              '\n' +
-              'Data da transação: ' +
-              this.tedResponse.dateTransaction +
-              '\n' +
-              'Valor da transação: ' +
-              this.tedResponse.value
-          );
+          alert('Transferecia concluída com sucesso');
           location.reload();
         },
         (error: ErroResponse) => {
