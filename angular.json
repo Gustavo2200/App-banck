@@ -35,7 +35,6 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
@@ -99,7 +98,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -109,9 +107,9 @@
     }
   },
   "cli": {
-    "analytics": "9d8f717d-5020-4e48-9b98-2dd4c44221b9"
-    "analytics": "6b2836ec-de3f-4fb0-9756-8852c6ae9f8d"
-    "analytics": "4d097127-46db-433c-b0fe-84e71c597b1d"
+    "analytics": "9d8f717d-5020-4e48-9b98-2dd4c44221b9",
+    "analytics": "6b2836ec-de3f-4fb0-9756-8852c6ae9f8d",
+    "analytics": "4d097127-46db-433c-b0fe-84e71c597b1d",
     "analytics": "163b46cf-ba3d-4422-a0b5-4c07d50ba5f2"
   }
 }
