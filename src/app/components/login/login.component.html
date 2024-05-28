@@ -19,7 +19,8 @@
                     <!-- Email ou Cpf -->
                     <div class="form-group mb-3">
                         <label for="login" class="form-label">Email ou Cpf</label>
-                        <input type="text" class="form-control" id="login" name="login" [(ngModel)]="loginDados.login" placeholder="Digite seu Email ou Cpf" required>
+                        <input type="text" class="form-control" id="login" name="login" 
+                        (blur)="formatarCPF($event)" [(ngModel)]="loginDados.login" placeholder="Digite seu Email ou Cpf" required>
                     </div>
                     <!-- Senha -->
                     <div class="form-group mb-4">

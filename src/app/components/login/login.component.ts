@@ -63,4 +63,28 @@ export class LoginComponent {
         return 'Ocorreu um erro desconhecido. Por favor, tente novamente.';
     }
   }
+
+
+  formatarCPF(event: any) {
+    let input = event.target as HTMLInputElement;
+    if(input.value.length === 11 ){
+      let cpf = input.value.replace(/\D/g, '');
+ 
+      if (cpf.length > 3) {
+        cpf = cpf.substring(0, 3) + '.' + cpf.substring(3);
+      }
+      if (cpf.length > 7) {
+        cpf = cpf.substring(0, 7) + '.' + cpf.substring(7);
+      }
+      if (cpf.length > 11) {
+        cpf = cpf.substring(0, 11) + '-' + cpf.substring(11);
+      }
+      if (cpf.length > 14) {
+        cpf = cpf.substring(0, 14);
+      }
+   
+      input.value = cpf;
+      this.loginDados.login = cpf
+    }
+  }
 }
