@@ -46,6 +46,7 @@ export class TelaTedComponent {
               'Valor da transação: ' +
               this.tedResponse.value
           );
+          location.reload();
         },
         (error: ErroResponse) => {
           alert(error.message);
