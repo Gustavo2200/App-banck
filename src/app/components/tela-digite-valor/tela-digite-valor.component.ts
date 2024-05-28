@@ -78,6 +78,9 @@ export class TelaDigiteValorComponent {
       console.log(this.transferencia)
       if ('status' in response){
         alert(response.message);
+        if(response.status == 200){
+          this.router.navigate(['/tela-principal'])
+        }
       } else{
         alert("Transferecia concluída com sucesso");
         this.router.navigate(['/tela-principal'])

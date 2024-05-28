@@ -68,7 +68,9 @@ export class CadastroClienteComponent {
                 if(err.includes('Telefone')) {
                   this.erros.phone = 'Telefone já registrado';
                 }
-                
+                if(err.includes('Senha')) {
+                  this.erros.password = err;
+                }
 
               })
             } else {
@@ -111,9 +113,12 @@ export class CadastroClienteComponent {
     if (!this.novoCliente.phone) {
       this.erros.phone = 'Digite um telefone válido';
     }
+    if(this.novoCliente.phone.length < 15) {
+      this.erros.phone = 'Digite um telefone válido';
+    }
 
     if (!this.novoCliente.password) {
-      this.erros.password = 'Digite uma senha válida';
+      this.erros.password = 'Digite uma senha válida (*entre 6 e 20 caracteres)';
     }
 
     if (!this.novoCliente.cpf) {
