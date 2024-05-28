@@ -14,10 +14,13 @@ export class ModalCadastrarChavePixComponent {
   constructor(private pixService: PixService, private router: Router) {}
 
   cadastrarChavePix(): void{
-    this.pixService.registarChavePix(this.chavePix).subscribe(()=>{
-      location.reload();
-    });
-    
+    if(this.chavePix == '0' || this.chavePix == ''){
+      alert("Selecione um tipo de chave Pix");
+    }else{
+      this.pixService.registarChavePix(this.chavePix).subscribe(()=>{
+        location.reload();
+      });  
+    }
   }
 
 }

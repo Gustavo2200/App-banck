@@ -19,6 +19,8 @@ import { ModalSairContaComponent } from './components/tela-principal/cabecalho/m
 import { CommonModule } from '@angular/common';
 import { TelaDigiteValorComponent } from './components/tela-digite-valor/tela-digite-valor.component';
 import { Interceptor } from './config/Interceptor';
+import { ModalLoadingComponent } from './components/modal-loading/modal-loading.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { Interceptor } from './config/Interceptor';
     RodapeComponent,
     ExtratoComponent,
     CadastroClienteComponent,
-    TelaDigiteValorComponent
+    TelaDigiteValorComponent,
+    ModalLoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { Interceptor } from './config/Interceptor';
     CommonModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

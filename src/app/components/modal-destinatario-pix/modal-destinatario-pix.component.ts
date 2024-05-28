@@ -19,6 +19,7 @@ export class ModalDestinatarioPixComponent {
    erroResponse: ErroResponse | null = null;
 
    enviarTransferencia() {
+    console.log(this.chavePix);
     this.pixService.buscarContaPorChavePix(this.chavePix).subscribe((response: ContaDestinoResponse | ErroResponse) => {
       
       if ('status' in response) { // Erro
