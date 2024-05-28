@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, finalize, switchMap } from 'rxjs/operators';
+import { catchError, finalize, switchMap, timeout } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { LoadingService } from '../service/loading.service';
@@ -23,6 +23,7 @@ export class Interceptor implements HttpInterceptor {
     if (publicUrls.includes(req.url)) {
       console.log("Public URL, skipping authorization header...");
       return next.handle(req).pipe(
+        timeout(6000),
         finalize(() => this.loadService.hide())
       );
     }
@@ -45,6 +46,7 @@ export class Interceptor implements HttpInterceptor {
     localStorage.setItem('expirado', 'false');
 
     return next.handle(authReq).pipe(
+      timeout(6000),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401 || error.status === 403) {
           console.log("Unauthorized, redirecting to login...");
@@ -56,6 +58,12 @@ export class Interceptor implements HttpInterceptor {
           
           this.router.navigate(['/login']);
         }
+        if (error.status === 503 || error.name === 'TimeoutError') {
+          console.log("Timeout or 503 error, redirecting to login...");
+          this.loginService.logout();
+          this.router.navigate(['/login']);
+        }
+        return throwError(error);
         return throwError(error);
       }), 
       finalize(() => this.loadService.hide())
