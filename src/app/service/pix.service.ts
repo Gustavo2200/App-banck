@@ -29,6 +29,7 @@ export class PixService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
+    console.log("/find-account/pix?key=" + chavePix);
     return this.http.get<ContaDestinoResponse>(this.api + "/find-account/pix?key=" + chavePix, { headers }).pipe(
       catchError((error) =>{
         const erroResponse: ErroResponse = {

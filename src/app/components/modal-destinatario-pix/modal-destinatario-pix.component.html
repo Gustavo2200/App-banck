@@ -23,7 +23,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <input type="text" name="chavePix" id="chavePix" class="form-control mb-3" placeholder="Celular" maxlength="15" (input)="formatarCelular($event)" >
+          <input type="text" name="chavePix" id="chavePix" class="form-control mb-3" placeholder="Celular" 
+           [(ngModel)]="chavePix" maxlength="15" (input)="formatarCelular($event)" >
           <button type="button" class="btn btn-primary" (click)="enviarTransferencia()">Enviar</button>
         </div>
       </div>
@@ -39,7 +40,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <input type="text" name="chavePix" id="chavePix" class="form-control mb-3" placeholder="CPF" maxlength="14" (input)="formatarCPF($event)" >
+          <input type="text" name="chavePix" id="chavePix" class="form-control mb-3" placeholder="CPF" 
+           [(ngModel)]="chavePix" maxlength="14" (input)="formatarCPF($event)" >
           <button type="button" class="btn btn-primary" (click)="enviarTransferencia()">Enviar</button>
         </div>
       </div>
@@ -55,7 +57,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <input type="text" name="chavePix" id="chavePix" class="form-control mb-3" placeholder="Chave">
+          <input type="text" name="chavePix" id="chavePix" class="form-control mb-3" 
+           [(ngModel)]="chavePix" placeholder="Chave">
           <button type="button" class="btn btn-primary" (click)="enviarTransferencia()">Enviar</button>
         </div>
       </div>
