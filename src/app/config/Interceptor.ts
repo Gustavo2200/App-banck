@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError, finalize, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
+import { LoadingService } from '../service/loading.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, 
+    private loadService: LoadingService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("Intercepting request...", req.url);
-
+    this.loadService.show();
     const publicUrls = [
       'https://fourcamp.up.railway.app/api-fourbank/get-token',
       'https://fourcamp.up.railway.app/api-fourbank/save-customer'
@@ -20,7 +22,9 @@ export class Interceptor implements HttpInterceptor {
 
     if (publicUrls.includes(req.url)) {
       console.log("Public URL, skipping authorization header...");
-      return next.handle(req);
+      return next.handle(req).pipe(
+        finalize(() => this.loadService.hide())
+      );
     }
 
     const token = this.loginService.getToken();
@@ -53,7 +57,8 @@ export class Interceptor implements HttpInterceptor {
           this.router.navigate(['/login']);
         }
         return throwError(error);
-      })
+      }), 
+      finalize(() => this.loadService.hide())
     );
   }
 }
