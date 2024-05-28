@@ -47,5 +47,10 @@
   .custom-navbar .nav-link:hover {
     color: #0011a7; /* Slightly darker blue on hover */
   }
+
+  .sair:hover{
+    cursor: pointer;
+    color: red;
+  }
   
   
