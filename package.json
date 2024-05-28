@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "ng build --configuration production",
-    "start:prod": "serve -s dist"
+    "start:prod": "serve -s dist --listen 0.0.0.0"
   },
   "private": true,
   "dependencies": {
@@ -39,7 +38,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.2",
-    "serve": "^14.0.0"
+    "typescript": "~5.4.2"
   }
 }
